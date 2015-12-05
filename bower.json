@@ -1,0 +1,20 @@
+{
+  "name": "HuanBlog",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Itdotaer/HuanBlog",
+  "authors": [
+    "SoftwareDreamer <hujiangtao1235@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "public/vendors",
+    "test",
+    "tests"
+  ]
+}
