@@ -6,6 +6,12 @@ var appInfo = {
     shortDescription: 'By Harry'
 };
 
+var dbConfig = {
+  poolSize: 20,
+  address: 'mongodb://127.0.0.1:27017/ItdotaerBlog-Dev'
+}
+
 module.exports = {
-    appInfo: appInfo
+    appInfo: appInfo,
+    dbConfig: dbConfig
 };
