@@ -1,6 +1,7 @@
-# HuanBlog
+# Itdoater Blog
 
 ><a herf="https://github.com/Itdotaer/MagoBlogForNodeJS-V2.1-">MagoBlogForNodeJS-V2.1-</a>的升级重构版本，之前是刚学习Node.js的时候按照教程做的。
+Address: https://github.com/Itdotaer/MagoBlogForNodeJS-V2.1-
 
 
 # Description
