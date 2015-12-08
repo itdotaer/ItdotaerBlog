@@ -36,6 +36,10 @@ var config = {
             loader: 'babel' // load babel-loader module
         },
         {
+            test: /\.css$/,
+            loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+        },
+        {
             test: /\.less$/,
             loader: ExtractTextPlugin.extract(
                     // activate source maps via loader query

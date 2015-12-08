@@ -10,7 +10,7 @@
 var appInfo = {
     appName: 'Itdotaer Blog',
     shortDescription: 'By Harry',
-    buildDev: false,
+    buildDev: true,
     hash: 'fb69e99dcfed9b73ec35'
 };
 
