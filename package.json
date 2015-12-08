@@ -2,9 +2,18 @@
   "name": "ItdotaerBlog",
   "version": "1.0.0",
   "private": true,
+  "description": "Itdotaer Blog",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "build-dev": "webpack",
+    "build-prod": "webpack -p"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Itdotaer/ItdotaerBlog.git"
+  },
+  "author": "Itdotaer<hujiangtao1235@qq.com>",
+  "license": "ISC",
   "dependencies": {
     "body-parser": "~1.12.4",
     "cookie-parser": "~1.3.5",
@@ -13,14 +22,19 @@
     "express": "~4.12.4",
     "express-session": "~1.9.1",
     "morgan": "~1.5.3",
-    "react": "^0.14.3",
     "serve-favicon": "~2.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.3.15",
     "babel-loader": "^6.2.0",
     "css-loader": "^0.23.0",
+    "history": "^1.15.0",
+    "moment": "^2.10.6",
+    "react": "^0.14.3",
+    "react-bootstrap": "^0.28.1",
+    "react-router": "^1.0.1",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.9"
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
   }
 }

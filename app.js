@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 //View Related Routes
 var routes = require('./routes/index');
 //Api Related Routes
-var api = require('./routes/api/index');
+var api = require('./routes/indexApi');
 
 //Express App
 var app = express();
