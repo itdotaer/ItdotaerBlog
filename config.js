@@ -1,6 +1,7 @@
 /**
  * Itdoater Blog's entire config information
  */
+
 var appInfo = {
     appName: 'Itdotaer Blog',
     shortDescription: 'By Harry'

@@ -17,11 +17,12 @@ var config = {
   },
   output: {
     path: path.resolve(__dirname, 'public/build'),
-    filename: 'app.js'
+    filename: '[name]-[hash].js',
+    chunkFileName: '[name]-[chunkhash].js'
   },
-  resolve:{
-      alias:{}
-  },
+  // resolve:{
+  //     alias:{}
+  // },
   module: {
     loaders:[
         {
@@ -34,18 +35,18 @@ var config = {
           loader: 'style!css' // Run both loaders
         }
     ],
-    noParse: []
+    // noParse: []
 },
-plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
-  ]
+// plugins: [
+//     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
+//   ]
 };
 
-deps.forEach(function(dep){
-    var depPath = path.resolve(node_modules, dep);
-
-    config.resolve.alias[dep.split(path.sep)[0]] = depPath;
-    config.module.noParse.push(depPath);
-});
+// deps.forEach(function(dep){
+//     var depPath = path.resolve(node_modules, dep);
+//
+//     config.resolve.alias[dep.split(path.sep)[0]] = depPath;
+//     config.module.noParse.push(depPath);
+// });
 
 module.exports = config;
