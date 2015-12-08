@@ -47,7 +47,6 @@ var config = {
                     'less?sourceMap'
                 )
         }
-
     ],
     noParse: []
 },
