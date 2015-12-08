@@ -17,11 +17,11 @@ var deps = [
 
 var config = {
   entry: {
-      app: path.resolve(__dirname, 'public/app/app.js'),
+      app: path.resolve(__dirname, 'app/app.js'),
       vendors: ['react', 'react-dom', 'react-router', 'react-bootstrap', 'moment']
   },
   output: {
-    path: path.resolve(__dirname, 'public/build'),
+    path: path.resolve(__dirname, 'build'),
     filename: appInfo.buildDev ? '[name].js' : '[name]-[hash].js',
     chunkFileName: appInfo.buildDev ? '[name].js' : '[name]-[chunkhash].js'
   },
