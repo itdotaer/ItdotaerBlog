@@ -1,4 +1,10 @@
-// Main
+/**
+ * Main
+ */
+
+// Css
+require('./styles/index.less');
+
 var React = require('react');
 var ReactRouter = require('react-router');
 var ReactRootstrap = require('react-bootstrap');

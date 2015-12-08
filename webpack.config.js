@@ -1,3 +1,4 @@
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path');
 var node_modules = path.resolve(__dirname, 'node_modules');
@@ -20,9 +21,9 @@ var config = {
     filename: '[name]-[hash].js',
     chunkFileName: '[name]-[chunkhash].js'
   },
-  // resolve:{
-  //     alias:{}
-  // },
+  resolve:{
+      alias:{}
+  },
   module: {
     loaders:[
         {
@@ -31,22 +32,36 @@ var config = {
             loader: 'babel' // load babel-loader module
         },
         {
-          test: /\.css$/, // Only .css files
-          loader: 'style!css' // Run both loaders
+            test: /\.less$/,
+            loader: ExtractTextPlugin.extract(
+                    // activate source maps via loader query
+                    'css?sourceMap!' +
+                    'less?sourceMap'
+                )
         }
+
     ],
-    // noParse: []
+    noParse: []
 },
-// plugins: [
-//     new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
-//   ]
+plugins: [
+    //vendors
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendors',
+      filename: '[name]-[hash].js',
+      minChunks: Infinity
+    }),
+
+    //Css files
+     new ExtractTextPlugin('[name]-[hash].css', {allChunks: true})
+  ]
 };
 
-// deps.forEach(function(dep){
-//     var depPath = path.resolve(node_modules, dep);
-//
-//     config.resolve.alias[dep.split(path.sep)[0]] = depPath;
-//     config.module.noParse.push(depPath);
-// });
+//No parse libs
+deps.forEach(function(dep){
+    var depPath = path.resolve(node_modules, dep);
+
+    config.resolve.alias[dep.split(path.sep)[0]] = depPath;
+    config.module.noParse.push(depPath);
+});
 
 module.exports = config;
