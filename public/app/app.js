@@ -6,28 +6,25 @@
 require('./styles/index.less');
 
 var React = require('react');
+var ReactDOM = require('react-dom');
 var ReactRouter = require('react-router');
 var ReactRootstrap = require('react-bootstrap');
+var ButtonGroup = ReactRootstrap.ButtonGroup;
+var Button = ReactRootstrap.Button;
 
 var DemoComponent = React.createClass({
     render: function(){
         return (
-            <div className="demo-class">
-                <header>
-                    <h1>Title Header</h1>
-                </header>
-                <div className="content">
-                    Content
-                </div>
-                <footer>
-                    Footer
-                </footer>
-            </div>
+            <ButtonGroup>
+               <Button>Left</Button>
+               <Button>Middle</Button>
+               <Button>Right</Button>
+             </ButtonGroup>
         );
     }
 });
 
-React.render(
+ReactDOM.render(
     <DemoComponent />,
     document.getElementById('content')
 );

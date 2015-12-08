@@ -3,9 +3,13 @@ var webpack = require('webpack');
 var path = require('path');
 var node_modules = path.resolve(__dirname, 'node_modules');
 
+//Config
+var appInfo = require('./config').appInfo;
+
 //Deps
 var deps = [
     'react/dist/react.min.js',
+    'react-dom/dist/react-dom.min.js',
     'react-router/dist/react-router.min.js',
     'react-bootstrap/dist/react-bootstrap.min.js',
     'moment/min/moment.min.js'
@@ -14,12 +18,12 @@ var deps = [
 var config = {
   entry: {
       app: path.resolve(__dirname, 'public/app/app.js'),
-      vendors: ['react', 'react-router', 'react-bootstrap', 'moment']
+      vendors: ['react', 'react-dom', 'react-router', 'react-bootstrap', 'moment']
   },
   output: {
     path: path.resolve(__dirname, 'public/build'),
-    filename: '[name]-[hash].js',
-    chunkFileName: '[name]-[chunkhash].js'
+    filename: appInfo.buildDev ? '[name].js' : '[name]-[hash].js',
+    chunkFileName: appInfo.buildDev ? '[name].js' : '[name]-[chunkhash].js'
   },
   resolve:{
       alias:{}
@@ -47,12 +51,12 @@ plugins: [
     //vendors
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendors',
-      filename: '[name]-[hash].js',
+      filename: appInfo.buildDev ? '[name].js' : '[name]-[hash].js',
       minChunks: Infinity
     }),
 
     //Css files
-     new ExtractTextPlugin('[name]-[hash].css', {allChunks: true})
+     new ExtractTextPlugin(appInfo.buildDev ? '[name].css' : '[name]-[hash].css', {allChunks: true})
   ]
 };
 

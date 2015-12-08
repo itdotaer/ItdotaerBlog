@@ -2,13 +2,13 @@
 <html>
   <head>
     <title><%= title + '-' + shortDes %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href="./build/app<%=hash %>.css" />
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <div id="content"></div>
-    <script src="./build/vendors.js"></script>
-    <script src="./build/app.js"></script>
+    <script src="./build/vendors<%=hash %>.js"></script>
+    <script src="./build/app<%=hash %>.js"></script>
   </body>
 </html>
