@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title + '-' + shortDes %></title>
-    <link rel='stylesheet' href="./app<%=hash %>.css" />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <div id="content"></div>
-    <script src="./vendors<%=hash %>.js"></script>
-    <script src="./app<%=hash %>.js"></script>
-  </body>
+    <head>
+        <title>
+            <%= title + '-' + shortDes %>
+        </title>
+        <!-- Bootstrap Core Css Style -->
+        <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap Theme Css Style -->
+        <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet">
+        <!-- App Local Css Style -->
+        <link rel='stylesheet' href="./app<%=hash %>.css" />
+    </head>
+    <body>
+        <section id="app"></section>
+        <!-- Vendors -->
+        <script src="./vendors<%=hash %>.js"></script>
+        <!-- App -->
+        <script src="./app<%=hash %>.js"></script>
+    </body>
 </html>
