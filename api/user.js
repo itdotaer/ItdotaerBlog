@@ -40,7 +40,7 @@ exports.getById = function(req, res, next){
     
     UserPorxy.getById(_id, function(err, user){
         return jsonTool.object(err, user);
-    })
+    });
 };
 
 exports.login = function(req, res, next){

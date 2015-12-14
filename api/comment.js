@@ -72,8 +72,4 @@ exports.delete = function(req, res, next){
     CommentProxy.delete(_id, function(err, count){
         return jsonTool.object(err, count);
     });
-};
-
-exports.delete = function(id, callback){
-    Comment.remove({ _id: id }, callback);
-};
+}
