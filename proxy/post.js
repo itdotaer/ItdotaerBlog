@@ -23,16 +23,20 @@ exports.get = function(title, index, size, callback){
     Post.find({ title: title }).limit(size).skip((index + 1) * size).exec(callback)
 };
 
+exports.total = function(title, callback){
+    Post.count({title: title}, callback);
+};
+
 exports.getById = function(id, callback){
     Post.findById({ _id: id }, callback);
 };
 
-exports.delete = function(id, callback)(
+exports.delete = function(id, callback){
     Post.remove({ _id: id }, callback);
-);
+};
 
-exports.update = function(userId, id, post, callback){
-    var conditions = { _id: id };
+exports.update = function(userId, post, callback){
+    var conditions = { _id: post._id };
     delete post._id;
     delete post.createdAt;
     delete post.createdBy;

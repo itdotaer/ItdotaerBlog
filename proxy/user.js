@@ -29,12 +29,12 @@ exports.login = function(loginName, password, callback){
     User.findOne({ loginName: loginName, password: password }, callback);
 };
 
-exports.delete = function(id, callback)(
+exports.delete = function(id, callback){
     User.remove({ _id: id }, callback);
-);
+};
 
-exports.update = function(id, user, callback){
-    var conditions = { _id: id };
+exports.update = function(user, callback){
+    var conditions = { _id: user._id };
     delete user._id;
     delete user.createdAt;
     delete user.createdBy;

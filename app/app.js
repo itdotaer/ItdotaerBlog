@@ -43,6 +43,7 @@ var Main = React.createClass({
     }
 });
 
+//About
 var About = React.createClass({
     render: function(){
         return (
