@@ -7,7 +7,7 @@ var Schema    = mongoose.Schema;
 
 var PostSchema = new Schema({
     title: { type: String },
-    tags: { type: Array },
+    tag: { type: String },
     des: { type: String },
     content: { type: String },
     pv: { type: Number },

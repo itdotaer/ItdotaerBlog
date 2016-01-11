@@ -10,13 +10,17 @@
 var appInfo = {
     appName: 'Itdotaer Blog',
     shortDescription: 'By Harry',
+    author: 'Harry Hu',
+    email: 'hujiangtao1235@qq.com',
     buildDev: true,
-    hash: 'fb69e99dcfed9b73ec35'
+    hash: 'fb69e99dcfed9b73ec35',
+    apiUrl: 'http://localhost:3000/api',
+    gitHubRepo: 'http://github.com/Itdotaer/ItdotaerBlog'
 };
 
 var dbConfig = {
-  poolSize: 20,
-  address: 'mongodb://127.0.0.1:27017/ItdotaerBlog-Dev'
+    poolSize: 20,
+    address: 'mongodb://127.0.0.1:27017/ItdotaerBlog-Dev'
 }
 
 module.exports = {

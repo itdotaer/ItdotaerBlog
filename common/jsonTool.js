@@ -10,3 +10,5 @@ var jsonTool = {
         return { errMsg: err, data: data ? data : '', total: total };
     }
 };
+
+module.exports = jsonTool;

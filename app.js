@@ -38,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 //Routes
 app.use('/', routes);
+app.use('/api', api);
 
 //Not Found
 app.use(errorHandler.notFound);

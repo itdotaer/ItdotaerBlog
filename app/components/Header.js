@@ -17,6 +17,8 @@ var Link = ReactRouter.Link;
  var NavDropdown = ReactRootstrap.NavDropdown;
  var MenuItem = ReactRootstrap.MenuItem;
 
+ var appInfo = require('../../config').appInfo;
+
  var Header = React.createClass({
      render: function(){
          return (
@@ -24,7 +26,7 @@ var Link = ReactRouter.Link;
                  <Navbar>
                     <Navbar.Header>
                       <Navbar.Brand>
-                        <a href="#">React-Bootstrap</a>
+                        <a href="#">{appInfo.appName}</a>
                       </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>
