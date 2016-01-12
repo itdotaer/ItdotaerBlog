@@ -2,14 +2,21 @@ var React = require('react');
 var Reflux = require('reflux');
 var PostActions = require('../actions/postActions');
 var PostStore = require('../stores/postStore');
+var EditorStore = require('../stores/editorStore');
 
 var Posts = React.createClass({
-    mixins:[Reflux.listenTo(PostStore, 'onStatusChange')],
+    mixins:[
+        Reflux.listenTo(PostStore, 'onStatusChange'),
+        Reflux.listenTo(EditorStore, 'onValueChange')
+    ],
     getInitialState: function(){
         return {total:0, posts: []};
     },
     onStatusChange: function(data){
         this.setState(data);
+    },
+    onValueChange: function(value){
+        console.log('ValueChange:', value);
     },
     componentDidMount: function(){
         PostActions.getAll();
