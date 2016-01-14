@@ -3,6 +3,9 @@ var Reflux = require('reflux');
 var PostActions = require('../actions/postActions');
 var PostStore = require('../stores/postStore');
 var EditorStore = require('../stores/editorStore');
+var Editor = require('../components/editor');
+
+var base = require('../requests/base');
 
 var Posts = React.createClass({
     mixins:[
@@ -17,6 +20,7 @@ var Posts = React.createClass({
     },
     onValueChange: function(value){
         console.log('ValueChange:', value);
+        base.auth('harry', '123456');
     },
     componentDidMount: function(){
         PostActions.getAll();
@@ -33,6 +37,7 @@ var Posts = React.createClass({
                         {post.title} | {post.tag} | {post.des} | {post.content} | {post.createdBy.name} | {post.updatedBy.name}
                     </h1>;
                 })}
+                <Editor />
                 </p>
             </div>
         );

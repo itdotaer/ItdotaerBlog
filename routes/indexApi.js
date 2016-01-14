@@ -2,13 +2,18 @@
  * Api routes
  */
 
- //User Api Controller
- //Post Api Controller
- var Post = require('../api/post');
- //Comment Api Controller
  var express = require('express');
  var router = express.Router();
 
+ //User Api Controller
+ var User = require('../api/user');
+ //Post Api Controller
+ var Post = require('../api/post');
+ //Comment Api Controller
+ var Comment = require('../api/comment');
+
  router.get('/posts', Post.get);
+ router.post('/auth', User.login);
+
 
  module.exports = router;

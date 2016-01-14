@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "build-dev": "webpack",
-    "build-prod": "webpack -p"
+    "build-prod": "webpack -p",
+    "test": "make test"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "less-loader": "^2.2.2",
     "markdown-it": "^5.1.0",
     "moment": "^2.10.6",
+    "promise": "^7.1.1",
     "react": "^0.14.3",
     "react-bootstrap": "^0.28.1",
     "react-router": "^1.0.1",
