@@ -11,7 +11,6 @@ var Main = React.createClass({
         return (
             <div>
                 <h1>Main</h1>
-                <Posts />
                 <Editor />
             </div>
         );

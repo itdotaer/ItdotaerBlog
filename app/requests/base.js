@@ -4,24 +4,24 @@ var apiUrl = require('../../config').appInfo.apiUrl;
 var authUrl = '/auth';
 
 var base = {
-    auth: auth,
-    authBearerToken: authBearerToken
+    auth: auth
 };
 
 function auth(loginName, password){
     common.post(apiUrl + authUrl, '', {loginName: loginName, password: password})
-        .then(function(data){
+        .then(function(res){
+            if(res.errMsg){
+                console.error('Error:', res.errMsg);
+                return;
+            }
+            //Set User Login Info To Cookie
+
             //Set token
-            console.log('===>Then Success')
+
         })
         .catch(function(err){
             //Error
             console.log('===>Cathch Error')
         });
 }
-
-function authBearerToken(beareerToken){
-
-}
-
 module.exports = base;

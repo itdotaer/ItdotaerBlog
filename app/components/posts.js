@@ -4,41 +4,33 @@ var PostActions = require('../actions/postActions');
 var PostStore = require('../stores/postStore');
 var EditorStore = require('../stores/editorStore');
 var Editor = require('../components/editor');
+var NotificationActions = require('../actions/notificationActions');
+var Notification = require('../components/notification');
 
 var base = require('../requests/base');
 
 var Posts = React.createClass({
     mixins:[
         Reflux.listenTo(PostStore, 'onStatusChange'),
-        Reflux.listenTo(EditorStore, 'onValueChange')
     ],
     getInitialState: function(){
-        return {total:0, posts: []};
+        return {index: 0};
     },
     onStatusChange: function(data){
         this.setState(data);
     },
-    onValueChange: function(value){
-        console.log('ValueChange:', value);
-        base.auth('harry', '123456');
+    addNotificatioin: function(){
+        NotificationActions.add('title', 'message', 'info');
     },
     componentDidMount: function(){
+        // NotificationActions.add('test notification');
         PostActions.getAll();
     },
     render: function(){
         return (
             <div>
-                <p>Posts Info===> </p>
-                <p>Total: {this.state.total},</p>
-                <p>List:</p>
-                <p>
-                {this.state.posts.map(function(post){
-                    return <h1>
-                        {post.title} | {post.tag} | {post.des} | {post.content} | {post.createdBy.name} | {post.updatedBy.name}
-                    </h1>;
-                })}
-                <Editor />
-                </p>
+                <Notification />
+                <button onClick={this.addNotificatioin}>Add Notification</button>
             </div>
         );
     }

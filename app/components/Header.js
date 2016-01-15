@@ -11,11 +11,6 @@ var Link = ReactRouter.Link;
 
  // React-Bootstrap
  var ReactRootstrap = require('react-bootstrap');
- var Navbar = ReactRootstrap.Navbar;
- var Nav = ReactRootstrap.Nav;
- var NavItem = ReactRootstrap.NavItem;
- var NavDropdown = ReactRootstrap.NavDropdown;
- var MenuItem = ReactRootstrap.MenuItem;
 
  var appInfo = require('../../config').appInfo;
 
@@ -23,13 +18,13 @@ var Link = ReactRouter.Link;
      render: function(){
          return (
              <header>
-                 <Navbar>
-                    <Navbar.Header>
-                      <Navbar.Brand>
+                 <ReactRootstrap.Navbar>
+                    <ReactRootstrap.Navbar.Header>
+                      <ReactRootstrap.Navbar.Brand>
                         <a href="#">{appInfo.appName}</a>
-                      </Navbar.Brand>
-                    </Navbar.Header>
-                    <Nav>
+                      </ReactRootstrap.Navbar.Brand>
+                    </ReactRootstrap.Navbar.Header>
+                    <ReactRootstrap.Nav>
                         <li>
                             <Link to={'/'}>Index</Link>
                         </li>
@@ -39,8 +34,8 @@ var Link = ReactRouter.Link;
                         <li>
                             <Link to={'/nomatch'}>NoMatch</Link>
                         </li>
-                    </Nav>
-                  </Navbar>
+                    </ReactRootstrap.Nav>
+                  </ReactRootstrap.Navbar>
              </header>
          );
      }

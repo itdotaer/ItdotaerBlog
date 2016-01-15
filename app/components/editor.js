@@ -12,25 +12,30 @@ var Editor =  React.createClass({
         return {value: ''};
     },
     onValueChange: function(value){
+        console.log('===>3', value);
+
         this.setState({value: value});
     },
     handleValueChange: function(value){
         EditorActions.setValue(value);
     },
     componentDidMount: function(){
+        console.log('==>1', this.state.value)
         EditorActions.getValue();
         var that = this;
         //Init Editor
         var simplemde = new SimpleMDE({ element: document.getElementById("editor") });
         simplemde.codemirror.on("change", function(){
+            if(!simplemde.value()){
+                return;
+            }
             that.handleValueChange(simplemde.value());
         });
+        console.log('==>4', this.state.value)
     },
     render: function(){
         return (
-            <div>
-                <textarea id="editor" value={this.state.value}></textarea>
-            </div>
+            <textarea id="editor" value={this.state.value}></textarea>
         );
     }
 });
