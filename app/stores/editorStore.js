@@ -5,7 +5,7 @@ var EditorStore = Reflux.createStore({
     value: '',
     listenables: EditorActions,
     onGetValue: function(){
-        console.log('===>2', this.value)
+        window.simplemde.value(this.value);
         this.trigger(this.value);
     },
     onSetValue: function(value){

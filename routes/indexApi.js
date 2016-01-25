@@ -13,7 +13,7 @@
  var Comment = require('../api/comment');
 
  router.get('/posts', Post.get);
- router.post('/auth', User.login);
+ router.post('/login', User.login);
 
 
  module.exports = router;

@@ -32,7 +32,7 @@ var Link = ReactRouter.Link;
                             <Link to={'/about'}>About</Link>
                         </li>
                         <li>
-                            <Link to={'/nomatch'}>NoMatch</Link>
+                            <Link to={'/login'}>Login</Link>
                         </li>
                     </ReactRootstrap.Nav>
                   </ReactRootstrap.Navbar>

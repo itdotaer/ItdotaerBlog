@@ -19,18 +19,13 @@ var Posts = React.createClass({
     onStatusChange: function(data){
         this.setState(data);
     },
-    addNotificatioin: function(){
-        NotificationActions.add('title', 'message', 'info');
-    },
     componentDidMount: function(){
-        // NotificationActions.add('test notification');
         PostActions.getAll();
     },
     render: function(){
         return (
             <div>
-                <Notification />
-                <button onClick={this.addNotificatioin}>Add Notification</button>
+                Posts
             </div>
         );
     }

@@ -1,3 +1,6 @@
+/**
+ * Post Store
+ */
 var PostActions = require('../actions/postActions');
 var Reflux = require('reflux');
 

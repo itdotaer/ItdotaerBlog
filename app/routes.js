@@ -11,6 +11,8 @@ var App = require('./pages/app');
 var Main = require('./pages/main');
 //About Page
 var About = require('./pages/about');
+//Login
+var Login = require('./pages/login');
 
 //Route
 var routeConfig = [
@@ -19,6 +21,7 @@ var routeConfig = [
         component: App,
         indexRoute: { component: Main },
         childRoutes: [
+            { path: 'login', component: Login },
             { path: 'about', component: About },
             { path: '*', component: Main }
         ]

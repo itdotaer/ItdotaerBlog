@@ -40,10 +40,8 @@ function post(baseUrl, queryStr, data){
     var promise = new Promise(function(resolve, reject){
         ajax('POST', baseUrl + (!queryStr || queryStr == '' ? '' : '?' + queryStr), data,
         function(data, status, jqXHR){
-            console.log('data', data);
             resolve(data);
         }, function(xmlHttpRequest, status, err){
-            console.error('err', err);
             reject(err);
         });
     });

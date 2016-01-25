@@ -9,33 +9,31 @@ var EditorStore = require('../stores/editorStore');
 var Editor =  React.createClass({
     mixins:[Reflux.listenTo(EditorStore, 'onValueChange')],
     getInitialState: function(){
-        return {value: ''};
+        return {value: '# Test'};
     },
     onValueChange: function(value){
-        console.log('===>3', value);
-
         this.setState({value: value});
     },
     handleValueChange: function(value){
         EditorActions.setValue(value);
     },
     componentDidMount: function(){
-        console.log('==>1', this.state.value)
         EditorActions.getValue();
         var that = this;
         //Init Editor
-        var simplemde = new SimpleMDE({ element: document.getElementById("editor") });
-        simplemde.codemirror.on("change", function(){
+        window.simplemde = new SimpleMDE({ element: document.getElementById("editor") });
+        window.simplemde.value(this.state.value);
+        window.simplemde.codemirror.on("change", function(){
             if(!simplemde.value()){
                 return;
             }
+
             that.handleValueChange(simplemde.value());
         });
-        console.log('==>4', this.state.value)
     },
     render: function(){
         return (
-            <textarea id="editor" value={this.state.value}></textarea>
+            <textarea id="editor"></textarea>
         );
     }
 });

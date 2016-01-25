@@ -7,6 +7,8 @@ var React = require('react');
 var Header = require('../components/header');
 // Footer
 var Footer = require('../components/footer');
+// Notification
+var Notification = require('../components/notification');
 //App
 var App = React.createClass({
  render: function(){
@@ -15,6 +17,7 @@ var App = React.createClass({
              <Header />
              {this.props.children}
              <Footer />
+             <Notification />
          </section>
      );
  }
