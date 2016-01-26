@@ -1,54 +1,68 @@
 /**
  * UserLogin
  */
+
 var React = require('react');
 var Reflux = require('reflux');
-var NotificationActions = require('../actions/notificationActions');
-var UserLoginActions = require('../actions/userLoginActions');
-
-var UserLoginStore = require('../stores/userLoginStore');
-
 // React-Bootstrap
 var ReactRootstrap = require('react-bootstrap');
 
+var history = require('../history');
+
+var NotificationActions = require('../actions/notificationActions');
+var UserLoginActions = require('../actions/userLoginActions');
+var UserLoginStore = require('../stores/userLoginStore');
+
 var UserLogin = React.createClass({
-    mixins:[Reflux.listenTo(UserLoginStore, 'loginOrLogout')],
-    getInitialState: function(){
+    mixins: [
+        Reflux.listenTo(UserLoginStore, 'login')
+    ],
+    getInitialState: function() {
         return {
             userName: '',
             password: ''
         };
     },
-    loginOrLogout: function(user){
-        if(user){
+    login: function(user) {
+        if (user) {
             //Login
             NotificationActions.add('Successed', 'Login Successed!', 'success');
-        }else{
-            //Logout
-            NotificationActions.add('Successed', 'Logout Successed!', 'success');
+            history.pushState(null, '/main');
         }
     },
-    changeUserName: function(event){
-        this.setState({userName: event.target.value, password: this.state.password});
+    changeUserName: function(event) {
+        this.setState({
+            userName: event.target.value,
+            password: this.state.password
+        });
     },
-    changePassword: function(event){
-        this.setState({userName: this.state.userName, password: event.target.value});
+    changePassword: function(event) {
+        this.setState({
+            userName: this.state.userName,
+            password: event.target.value
+        });
     },
-    submit: function(){
-        if(this.state.userName == '' || this.state.password == ''){
+    submit: function() {
+        if (this.state.userName == '' || this.state.password == '') {
             NotificationActions.add('Error', 'User Name or Password is null!', 'error');
-        }else{
+        } else {
             //Login
-            UserLoginActions.login({loginName: this.state.userName, password: this.state.password});
+            UserLoginActions.login({
+                loginName: this.state.userName,
+                password: this.state.password
+            });
         }
     },
-    reset: function(){
-        this.setState({userName: '', password: ''});
+    reset: function() {
+        this.setState({
+            userName: '',
+            password: ''
+        });
     },
-    render: function(){
+    render: function() {
         return (
             <div className="row">
-                <div className="col-md-6 col-md-offset-3 login-panel">
+                <div className="col-md-4 col-md-offset-4 login-panel">
                     <form className="form-horizontal">
                         <ReactRootstrap.Input type="text" label="User Name:" placeholder="User Name" labelClassName="col-xs-2" wrapperClassName="col-xs-8" onChange={this.changeUserName} value={this.state.userName}/>
                         <ReactRootstrap.Input type="password" label="Password:" placeholder="Password" labelClassName="col-xs-2" wrapperClassName="col-xs-8" onChange={this.changePassword} value={this.state.password}/>

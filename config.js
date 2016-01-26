@@ -14,7 +14,7 @@ var appInfo = {
     email: 'hujiangtao1235@qq.com',
     buildDev: true,
     hash: 'fb69e99dcfed9b73ec35',
-    apiUrl: 'http://localhost:3000/api',
+    apiUrl: 'http://10.44.22.76:3000/api',
     gitHubRepo: 'http://github.com/Itdotaer/ItdotaerBlog'
 };
 

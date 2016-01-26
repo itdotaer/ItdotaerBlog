@@ -19,7 +19,7 @@ var deps = [
 var config = {
   entry: {
       app: path.resolve(__dirname, 'app/main.js'),
-      vendors: ['react', 'react-dom', 'react-router', 'react-bootstrap', 'moment', 'jquery', 'promise']
+      vendors: ['react', 'react-dom', 'react-router', 'react-bootstrap', 'moment', 'jquery', 'promise', 'history']
   },
   output: {
     path: path.resolve(__dirname, 'build'),
