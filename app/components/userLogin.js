@@ -64,12 +64,12 @@ var UserLogin = React.createClass({
             <div className="row">
                 <div className="col-md-4 col-md-offset-4 login-panel">
                     <form className="form-horizontal">
-                        <ReactRootstrap.Input type="text" label="User Name:" placeholder="User Name" labelClassName="col-xs-2" wrapperClassName="col-xs-8" onChange={this.changeUserName} value={this.state.userName}/>
-                        <ReactRootstrap.Input type="password" label="Password:" placeholder="Password" labelClassName="col-xs-2" wrapperClassName="col-xs-8" onChange={this.changePassword} value={this.state.password}/>
+                        <ReactRootstrap.Input type="text" label="User Name:" placeholder="User Name" labelClassName="col-md-2" wrapperClassName="col-md-8" onChange={this.changeUserName} value={this.state.userName}/>
+                        <ReactRootstrap.Input type="password" label="Password:" placeholder="Password" labelClassName="col-md-2" wrapperClassName="col-md-8" onChange={this.changePassword} value={this.state.password}/>
                         <div className="row">
                             <div className="col-md-4 col-md-offset-4">
-                                <input type="button" className="btn btn-info btn-padding" style={{float: "left"}} value="Login" onClick={this.submit}/>
-                                <input type="button" className="btn btn-warning btn-padding" style={{float: "right"}} value="Reset" onClick={this.reset}/>
+                                <input type="button" className="btn btn-info btn-padding btn-margin" value="Login" onClick={this.submit}/>
+                                <input type="button" className="btn btn-warning btn-padding" value="Reset" onClick={this.reset}/>
                             </div>
                         </div>
                     </form>

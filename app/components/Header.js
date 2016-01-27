@@ -4,62 +4,32 @@
 
 // React
 var React = require('react');
+// Reflux
+var Reflux = require('reflux');
+// React-Bootstrap
+var ReactRootstrap = require('react-bootstrap');
 
-//React-Router
-var ReactRouter = require('react-router');
-var Link = ReactRouter.Link;
-var history = require('../history');
+var HeaderStore = require('../stores/headerStore');
+var HeaderActions = require('../actions/headerActions');
 
- // React-Bootstrap
- var ReactRootstrap = require('react-bootstrap');
+var appInfo = require('../../config').appInfo;
 
- var appInfo = require('../../config').appInfo;
-
- var Header = React.createClass({
+var Header = React.createClass({
+     mixins:[Reflux.listenTo(HeaderStore, 'getMenu')],
      getInitialState: function(){
-         return {
-             mainMenu: {
-                 activeKey: 0,
-                 items: [
-                     {
-                         id: 0,
-                         name: 'Index',
-                         path: '/main'
-                     },
-                     {
-                         id: 1,
-                         name: 'About',
-                         path: '/about'
-                     }
-                 ]
-             },
-             userMenu: {
-                 activeKey: -1,
-                 items: [
-                     {
-                         id: 0,
-                         name: 'Login',
-                         path: '/login'
-                     }
-                 ]
-             }
-         };
+         return {};
+     },
+     getMenu: function(menu){
+         this.setState(menu);
      },
      handleMainMenuSelect: function(selectedKey){
-         history.pushState(null, this.state.mainMenu.items[selectedKey].path);
-
-         var initState = this.state;
-         initState.userMenu.activeKey = -1;
-         initState.mainMenu.activeKey = selectedKey;
-         this.setState(initState);
+         HeaderActions.selectMenu('mainMenu', selectedKey);
      },
      handleUserMenuSelect: function(selectedKey){
-         history.pushState(null, this.state.userMenu.items[selectedKey].path);
-
-         var initState = this.state;
-         initState.userMenu.activeKey = selectedKey;
-         initState.mainMenu.activeKey = -1;
-         this.setState(initState);
+         HeaderActions.selectMenu('userMenu', selectedKey);
+     },
+     componentDidMount: function(){
+         HeaderActions.get();
      },
      render: function(){
          return (
@@ -70,22 +40,26 @@ var history = require('../history');
                         <a href="#">{appInfo.appName}</a>
                       </ReactRootstrap.Navbar.Brand>
                     </ReactRootstrap.Navbar.Header>
-                    <ReactRootstrap.Nav activeKey={this.state.mainMenu.activeKey} onSelect={this.handleMainMenuSelect} pullLeft={true}>
+                    <ReactRootstrap.Nav activeKey={this.state.hasOwnProperty('mainMenu') ? this.state.mainMenu.activeKey : -1} onSelect={this.handleMainMenuSelect} pullLeft={true}>
                         {
-                            this.state.mainMenu.items.map(function(item){
-                                return (
-                                    <ReactRootstrap.NavItem key={item.id} eventKey={item.id}>{item.name}</ReactRootstrap.NavItem>
-                                );
-                            })
+                            this.state.hasOwnProperty('mainMenu') ? (
+                                this.state.mainMenu.items.map(function(item){
+                                    return (
+                                        <ReactRootstrap.NavItem key={item.id} eventKey={item.id}>{item.name}</ReactRootstrap.NavItem>
+                                    );
+                                })
+                            ) : null
                         }
                      </ReactRootstrap.Nav>
-                     <ReactRootstrap.Nav activeKey={this.state.userMenu.activeKey} onSelect={this.handleUserMenuSelect} pullRight={true}>
+                     <ReactRootstrap.Nav activeKey={this.state.hasOwnProperty('userMenu') ? this.state.userMenu.activeKey : -1} onSelect={this.handleUserMenuSelect} pullRight={true}>
                          {
-                             this.state.userMenu.items.map(function(item){
-                                 return (
-                                     <ReactRootstrap.NavItem key={item.id} eventKey={item.id}>{item.name}</ReactRootstrap.NavItem>
-                                 );
-                             })
+                             this.state.hasOwnProperty('userMenu') ? (
+                                 this.state.userMenu.items.map(function(item){
+                                     return (
+                                         <ReactRootstrap.NavItem key={item.id} eventKey={item.id}>{item.name}</ReactRootstrap.NavItem>
+                                     );
+                                 })
+                             ) : null
                          }
                       </ReactRootstrap.Nav>
                  </ReactRootstrap.Navbar>

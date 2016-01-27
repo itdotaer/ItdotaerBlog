@@ -7,6 +7,7 @@ var React = require('react');
 var ReactRouter = require('react-router');
 var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
+var IndexRoute = ReactRouter.IndexRoute;
 var Link = ReactRouter.Link;
 
 var history  = require('./history');
@@ -42,6 +43,7 @@ var Login = require('./pages/login');
 var routes = (
     <Router history={history}>
         <Route path="/" component={App}>
+            <IndexRoute component={Main}/>
             <Route path="main" component={Main} />
             <Route path="about" component={About} />
             <Route path="login" component={Login} />
