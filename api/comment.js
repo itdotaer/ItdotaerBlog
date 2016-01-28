@@ -1,6 +1,7 @@
 /**
  * Comment Api Controller
  */
+
 var CommentProxy = require('../proxy').Comment;
 var jsonTool = require('../common/jsonTool');
 

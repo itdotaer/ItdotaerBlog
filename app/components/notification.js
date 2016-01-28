@@ -21,8 +21,8 @@ var Notification =  React.createClass({
         switch (notification.action) {
             case 'success':
                 this.refs.container.success(
-                  notification.title,
                   notification.message,
+                  notification.title,
                   {
                       timeOut: notification.timeOut,
                       extendedTimeOut: notification.extendedTimeOut
@@ -30,8 +30,8 @@ var Notification =  React.createClass({
                 break;
             case 'error':
                 this.refs.container.error(
-                  notification.title,
                   notification.message,
+                  notification.title,
                   {
                       timeOut: notification.timeOut,
                       extendedTimeOut: notification.extendedTimeOut
@@ -39,8 +39,8 @@ var Notification =  React.createClass({
                 break;
             case 'warning':
                 this.refs.container.warning(
-                  notification.title,
                   notification.message,
+                  notification.title,
                   {
                       timeOut: notification.timeOut,
                       extendedTimeOut: notification.extendedTimeOut

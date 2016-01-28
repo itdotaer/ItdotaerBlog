@@ -6,6 +6,7 @@
  var Reflux = require('reflux');
 var HeaderActions = require('../actions/headerActions');
 var NotificationActions = require('../actions/notificationActions');
+var UserLoginActions = require('../actions/userLoginActions');
 
 // IsDebug
 var isDebug = require('../../config').appInfo.isDebug;
@@ -32,6 +33,7 @@ var HeaderStore = Reflux.createStore({
         },
         userMenu: {
             activeKey: -1,
+            user: null,
             items: [
                 {
                     id: 0,
@@ -43,9 +45,11 @@ var HeaderStore = Reflux.createStore({
     },
     listenables: HeaderActions,
     onGet: function(){
+        if(isDebug) console.log('Location', window.location)
         //Listen history
         var listener = history.listen(location=>{
             var currentPath = location.pathname;
+            if(isDebug) console.log('triggered', location);
 
             var that = this;
             //Search mainMenus
@@ -67,21 +71,40 @@ var HeaderStore = Reflux.createStore({
             this.trigger(this.menu);
         });
     },
+    onLoginSuccessed: function(user){
+        if(isDebug) console.log('user', user);
+        this.menu.userMenu.user = user;
+        
+        this.menu.userMenu.items[0].name = 'Logout';
+        this.menu.userMenu.items[0].path = '/logout';
+
+        history.pushState(null, '/main');
+        this.trigger(this.menu);
+    },
     onSelectMenu: function(menuType, selectedKey){
+        if(isDebug) console.log('menu', this.menu);
         if(isDebug) console.log('menuType', menuType);
-        if(isDebug) console.log('selectKey', selectedKey)
+        if(isDebug) console.log('selectKey', selectedKey);
         switch (menuType) {
             case 'mainMenu':
                 history.pushState(null, this.menu.mainMenu.items[selectedKey].path);
-                this.menu.userMenu.activeKey = -1;
-                this.menu.mainMenu.activeKey = selectedKey;
-                this.trigger(this.menu);
                 break;
             case 'userMenu':
-                history.pushState(null, this.menu.userMenu.items[selectedKey].path);
-                this.menu.userMenu.activeKey = selectedKey;
-                this.menu.mainMenu.activeKey = -1;
-                this.trigger(this.menu);
+                // If user has login, logout;
+                // else navigate to login page.
+                if(this.menu.userMenu.items[0].name == 'Logout'){
+                    this.menu.userMenu.user = null;
+                    this.menu.userMenu.items[0].name = 'Login';
+                    this.menu.userMenu.items[0].path = '/login';
+
+                    UserLoginActions.logout();
+
+                    history.pushState(null, '/main');
+                    this.trigger(this.item);
+                }else{
+                    history.pushState(null, this.menu.userMenu.items[selectedKey].path);
+                }
+
                 break;
             default:
                 NotificationActions.add('Error', 'Error MenuType(' + menuType + ')!', 'error');

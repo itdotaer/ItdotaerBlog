@@ -2,11 +2,6 @@
  * Itdoater Blog's entire config information
  */
 
-/**
- * [appInfo description]
- * If buildDev is true, webpack will generate resourse files without hash code,
- * else will with hash code.And you need update the hash manually.
- */
 var appInfo = {
     appName: 'Itdotaer Blog',
     shortDescription: 'By Harry',
@@ -14,6 +9,7 @@ var appInfo = {
     email: 'hujiangtao1235@qq.com',
     buildDev: true,
     isDebug: true,
+    sessionSecret: 'itdotaer',
     hash: 'fb69e99dcfed9b73ec35',
     apiUrl: 'http://10.44.22.76:3000/api',
     gitHubRepo: 'http://github.com/Itdotaer/ItdotaerBlog'

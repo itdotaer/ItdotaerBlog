@@ -1,6 +1,7 @@
 /**
  * User Api Controller
  */
+
 var UserPorxy = require('../proxy').User;
 var auth = require('../middlewares/auth');
 var jsonTool = require('../common/jsonTool');
@@ -51,7 +52,9 @@ exports.login = function(req, res, next){
     }
 
     UserPorxy.login(user.loginName, user.password, function(err, cbUser){
-        console.log('===>cbUser', cbUser)
+        if(cbUser){
+            req.session.user = cbUser;
+        }
         return res.json(jsonTool.object(err, cbUser));
     });
 };

@@ -21,7 +21,7 @@ exports.add = function(userId, title, tag, des, content, callback){
 
 exports.get = function(title, index, size, callback){
     Post.find(title ? { title: title } : null).limit(size).skip((index - 1) * size)
-    .populate('createdBy').populate('updatedBy').exec(callback)
+    .populate('comment').populate('createdBy').populate('updatedBy').exec(callback)
 };
 
 exports.total = function(title, callback){

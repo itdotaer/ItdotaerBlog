@@ -11,6 +11,7 @@ var history = require('../history');
 
 var NotificationActions = require('../actions/notificationActions');
 var UserLoginActions = require('../actions/userLoginActions');
+var HeaderActions = require('../actions/headerActions');
 var UserLoginStore = require('../stores/userLoginStore');
 
 var UserLogin = React.createClass({
@@ -27,7 +28,8 @@ var UserLogin = React.createClass({
         if (user) {
             //Login
             NotificationActions.add('Successed', 'Login Successed!', 'success');
-            history.pushState(null, '/main');
+
+            HeaderActions.loginSuccessed(user);
         }
     },
     changeUserName: function(event) {

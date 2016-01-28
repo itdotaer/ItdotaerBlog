@@ -1,8 +1,10 @@
 /**
  * Post Store
  */
-var PostActions = require('../actions/postActions');
+
 var Reflux = require('reflux');
+var PostActions = require('../actions/postActions');
+var NotificationActiosn = require('../actions/notificationActions');
 
 var apiUrl = require('../../config').appInfo.apiUrl;
 var postsUrl = '/posts'

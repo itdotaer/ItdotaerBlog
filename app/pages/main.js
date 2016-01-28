@@ -9,9 +9,8 @@ var Editor = require('../components/editor');
 var Main = React.createClass({
     render: function(){
         return (
-            <div>
-                <h1>Main</h1>
-                <Editor />
+            <div className='container'>
+                <Posts />
             </div>
         );
     }

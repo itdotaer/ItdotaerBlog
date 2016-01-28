@@ -47,6 +47,7 @@ var routes = (
             <Route path="main" component={Main} />
             <Route path="about" component={About} />
             <Route path="login" component={Login} />
+            <Route path="logout" component={Main} />
             <Route path="*" component={Main} />
         </Route>
     </Router>

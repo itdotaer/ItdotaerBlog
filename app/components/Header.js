@@ -28,6 +28,10 @@ var Header = React.createClass({
      handleUserMenuSelect: function(selectedKey){
          HeaderActions.selectMenu('userMenu', selectedKey);
      },
+     handleLoginUserMenuSelect: function(event, selectedKey){
+         event.preventDefault();
+         HeaderActions.selectMenu('userMenu', selectedKey);
+     },
      componentDidMount: function(){
          HeaderActions.get();
      },
@@ -51,17 +55,38 @@ var Header = React.createClass({
                             ) : null
                         }
                      </ReactRootstrap.Nav>
-                     <ReactRootstrap.Nav activeKey={this.state.hasOwnProperty('userMenu') ? this.state.userMenu.activeKey : -1} onSelect={this.handleUserMenuSelect} pullRight={true}>
-                         {
-                             this.state.hasOwnProperty('userMenu') ? (
+                     {
+                         //Not login menu
+                         this.state.hasOwnProperty('userMenu') && !this.state.userMenu.user ? (
+                             <ReactRootstrap.Nav activeKey={this.state.hasOwnProperty('userMenu') ? this.state.userMenu.activeKey : -1} onSelect={this.handleUserMenuSelect} pullRight={true}>
+                             {
                                  this.state.userMenu.items.map(function(item){
                                      return (
                                          <ReactRootstrap.NavItem key={item.id} eventKey={item.id}>{item.name}</ReactRootstrap.NavItem>
                                      );
                                  })
-                             ) : null
-                         }
-                      </ReactRootstrap.Nav>
+                             }
+                             </ReactRootstrap.Nav>
+                         ) : null
+                     }
+                     {
+                         //Login menu
+                         this.state.hasOwnProperty('userMenu') && this.state.userMenu.user ? (
+                             <ReactRootstrap.Nav onSelect={this.handleLoginUserMenuSelect} pullRight={true}>
+                                 {
+                                     <ReactRootstrap.NavDropdown eventKey="0" title={this.state.userMenu.user.name} id="userDropdownMenu">
+                                     {
+                                         this.state.userMenu.items.map(function(item){
+                                             return (
+                                                 <ReactRootstrap.MenuItem key={item.id} eventKey={item.id}>{item.name}</ReactRootstrap.MenuItem>
+                                             );
+                                         })
+                                     }
+                                     </ReactRootstrap.NavDropdown>
+                                 }
+                              </ReactRootstrap.Nav>
+                         ) : null
+                     }
                  </ReactRootstrap.Navbar>
              </header>
          );

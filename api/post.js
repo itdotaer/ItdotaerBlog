@@ -1,6 +1,7 @@
 /**
  * Post Api Controller
  */
+
 var PostProxy = require('../proxy').Post;
 var auth = require('../middlewares/auth');
 var jsonTool = require('../common/jsonTool');

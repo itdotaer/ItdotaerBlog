@@ -1,10 +1,13 @@
 var express = require('express');
+var session = require('express-session');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//Config
+var config = require('./config');
 //View Related Routes
 var routes = require('./routes/index');
 //Api Related Routes
@@ -34,6 +37,11 @@ if(isDevEnv){
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+//Session
+app.use(session({
+  secret: config.appInfo.sessionSecret
+}))
+//Public dir
 app.use(express.static(path.join(__dirname, 'build')));
 
 //Routes
