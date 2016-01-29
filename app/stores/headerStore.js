@@ -21,7 +21,7 @@ var HeaderStore = Reflux.createStore({
             items: [
                 {
                     id: 0,
-                    name: 'Index',
+                    name: 'Posts',
                     path: '/main'
                 },
                 {
@@ -74,9 +74,11 @@ var HeaderStore = Reflux.createStore({
     onLoginSuccessed: function(user){
         if(isDebug) console.log('user', user);
         this.menu.userMenu.user = user;
-        
-        this.menu.userMenu.items[0].name = 'Logout';
-        this.menu.userMenu.items[0].path = '/logout';
+
+        this.menu.userMenu.items[0].name = 'New Post';
+        this.menu.userMenu.items[0].path = '/newPost';
+
+        this.menu.userMenu.items.push({id: this.menu.userMenu.items.length, name: 'Logout', path: '/logout'});
 
         history.pushState(null, '/main');
         this.trigger(this.menu);
@@ -92,10 +94,12 @@ var HeaderStore = Reflux.createStore({
             case 'userMenu':
                 // If user has login, logout;
                 // else navigate to login page.
-                if(this.menu.userMenu.items[0].name == 'Logout'){
+                if(this.menu.userMenu.items[selectedKey].path == '/logout'){
                     this.menu.userMenu.user = null;
                     this.menu.userMenu.items[0].name = 'Login';
                     this.menu.userMenu.items[0].path = '/login';
+
+                    this.menu.userMenu.items.splice(1, this.menu.userMenu.items.length - 1);
 
                     UserLoginActions.logout();
 

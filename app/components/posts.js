@@ -45,7 +45,7 @@ var Posts = React.createClass({
                                     </h4>
                                     <div className="list-footer">
                                         <a target="_blank" href="/p/e4b8175395ce">阅读 {post.pv}</a>
-                                        <a target="_blank" href="/p/e4b8175395ce#comments">· 评论 {post.comments.length}</a>
+                                        <a target="_blank" href="/p/e4b8175395ce#comments">· 评论 22</a>
                                         <span> · 喜欢 62</span>
                                     </div>
                                 </li>

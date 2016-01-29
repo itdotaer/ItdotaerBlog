@@ -15,7 +15,9 @@ var App = React.createClass({
      return (
          <section>
              <Header />
-             {this.props.children}
+             <div className="container">
+                 {this.props.children}
+             </div>
              <Footer />
              <Notification />
          </section>

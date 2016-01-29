@@ -4,13 +4,21 @@
 
 var React = require('react');
 var Posts = require('../components/posts');
-var Editor = require('../components/editor');
+var Tags = require('../components/tags');
+var HotPosts = require('../components/hotPosts');
 
 var Main = React.createClass({
     render: function(){
         return (
-            <div className='container'>
-                <Posts />
+            <div>
+                <div className="main-left">
+                    <Posts />
+                </div>
+                <div className="main-right">
+                    <HotPosts />
+                    <HotPosts />
+                    <Tags />
+                </div>
             </div>
         );
     }
