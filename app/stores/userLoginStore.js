@@ -17,7 +17,7 @@ var UserLoginStore = Reflux.createStore({
         var that = this;
         console.log('login', user);
         //Get all
-        common.post(apiUrl + loginUrl, '', user)
+        common.post(apiUrl + loginUrl, '', JSON.stringify(user))
             .then(function(res){
                 if(res.errMsg){
                     console.error('Error', res.errMsg);

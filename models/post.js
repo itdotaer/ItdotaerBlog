@@ -7,7 +7,7 @@ var Schema    = mongoose.Schema;
 
 var PostSchema = new Schema({
     title: { type: String },
-    tag: { type: String },
+    tags: [],
     des: { type: String },
     content: { type: String },
     pv: { type: Number },
@@ -17,6 +17,6 @@ var PostSchema = new Schema({
     updatedBy: {type: Schema.ObjectId, ref: 'User'}
 });
 
-PostSchema.index({unique: true});
+PostSchema.index({title: 1});
 
 mongoose.model('Post', PostSchema);

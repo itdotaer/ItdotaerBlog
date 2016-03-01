@@ -13,6 +13,7 @@ function ajax(type, url, data, success, error){
         type: type,
         url: url,
         data: data,
+        contentType: 'application/json',
         dataType: 'json',
         success: function(data, status, jqXHR){
             success(data, status, jqXHR);

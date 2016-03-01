@@ -4,7 +4,7 @@
 
 var Reflux = require('reflux');
 var PostActions = require('../actions/postActions');
-var NotificationActiosn = require('../actions/notificationActions');
+var NotificationActions = require('../actions/notificationActions');
 
 var apiUrl = require('../../config').appInfo.apiUrl;
 var postsUrl = '/posts'
@@ -33,7 +33,18 @@ var PostStore = Reflux.createStore({
             });
     },
     onAdd: function(post){
+        common.post(apiUrl + postsUrl, '', JSON.stringify(post))
+            .then(function(res){
+                if(res.errMsg){
+                    console.error('Error', res.errMsg);
+                    return;
+                }
 
+                console.log('==>res', res);
+            })
+            .catch(function(err){
+                console.error('->Catch error', err)
+            });
     }
 });
 

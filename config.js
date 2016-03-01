@@ -11,7 +11,7 @@ var appInfo = {
     isDebug: true,
     sessionSecret: 'itdotaer',
     hash: 'fb69e99dcfed9b73ec35',
-    apiUrl: 'http://10.44.22.76:3000/api',
+    apiUrl: 'http://10.44.22.82:3000/api',
     gitHubRepo: 'http://github.com/Itdotaer/ItdotaerBlog'
 };
 

@@ -21,7 +21,7 @@ var Editor =  React.createClass({
         EditorActions.getValue();
         var that = this;
         //Init Editor
-        window.simplemde = new SimpleMDE({ element: document.getElementById("editor") });
+        window.simplemde = new SimpleMDE({ element: document.getElementById("editor"), spellChecker: false });
         window.simplemde.value(this.state.value);
         window.simplemde.codemirror.on("change", function(){
             if(!simplemde.value()){
