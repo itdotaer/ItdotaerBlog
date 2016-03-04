@@ -22,6 +22,8 @@ var About = require('./pages/about');
 var Login = require('./pages/login');
 //New Post
 var NewPost = require('./pages/newPost');
+//Detail Post
+var DetailPost = require('./pages/detailPost');
 
 //Route
 // var routeConfig = [
@@ -47,7 +49,8 @@ var routes = (
         <Route path="/" component={App}>
             <IndexRoute component={Main}/>
             <Route path="main" component={Main} />
-            <Route path="newPost" component={NewPost} />
+            <Route path="post" component={NewPost} />
+            <Route path="post/:id" component={DetailPost} />
             <Route path="about" component={About} />
             <Route path="login" component={Login} />
             <Route path="logout" component={Main} />

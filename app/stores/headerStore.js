@@ -76,7 +76,7 @@ var HeaderStore = Reflux.createStore({
         this.menu.userMenu.user = user;
 
         this.menu.userMenu.items[0].name = 'New Post';
-        this.menu.userMenu.items[0].path = '/newPost';
+        this.menu.userMenu.items[0].path = '/post';
 
         this.menu.userMenu.items.push({id: this.menu.userMenu.items.length, name: 'Logout', path: '/logout'});
 

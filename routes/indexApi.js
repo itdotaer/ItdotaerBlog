@@ -16,7 +16,8 @@ var Comment = require('../api/comment');
 
 // Post
 router.get('/posts', Post.get);
-router.post('/posts', auth.loginRequired, Post.add)
+router.post('/posts', auth.loginRequired, Post.add);
+router.get('/posts/:id', Post.getById);
 
 // Login
 router.post('/login', User.login);

@@ -26,9 +26,6 @@ var UserLogin = React.createClass({
     },
     login: function(user) {
         if (user) {
-            //Login
-            NotificationActions.add('Successed', 'Login Successed!', 'success');
-
             HeaderActions.loginSuccessed(user);
         }
     },

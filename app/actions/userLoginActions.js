@@ -6,7 +6,8 @@ var Reflux = require('reflux');
 
 var LoginActions = Reflux.createActions([
     'login',
-    'logout'
+    'logout',
+    'checkIfLogin'
 ]);
 
 module.exports = LoginActions;

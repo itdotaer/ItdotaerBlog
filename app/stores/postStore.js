@@ -5,9 +5,10 @@
 var Reflux = require('reflux');
 var PostActions = require('../actions/postActions');
 var NotificationActions = require('../actions/notificationActions');
+var HeaderActions = require('../actions/headerActions');
 
 var apiUrl = require('../../config').appInfo.apiUrl;
-var postsUrl = '/posts'
+var postsUrl = '/posts';
 
 var common = require('../requests/common');
 
@@ -20,7 +21,7 @@ var PostStore = Reflux.createStore({
         common.get(apiUrl + postsUrl, 'index=1&size=9999')
             .then(function(res){
                 if(res.errMsg){
-                    console.error('Error', res.errMsg);
+                    NotificationActions.add('Error', res.errMsg, 'error');
                     return;
                 }
 
@@ -29,21 +30,47 @@ var PostStore = Reflux.createStore({
                 that.trigger(that.data);
             })
             .catch(function(err){
-                console.error('->Catch error', err);
+                NotificationActions.add('Error', err, 'error');
+            });
+    },
+    onGetById: function(id){
+        if(!id || id == ''){
+            NotificationActions.add('Error', 'No Valid Post Id', 'error');
+            return;
+        }
+
+        var that = this;
+        //Get by postid
+        common.get(apiUrl + postsUrl + '/' + id, '')
+            .then(function(res){
+                if(res.errMsg){
+                    NotificationActions.add('Error', res.errMsg, 'error');
+                    return;
+                }
+
+                that.data.posts = [res.data];
+                that.data.total = 1;
+                that.trigger(that.data);
+            })
+            .catch(function(err){
+                NotificationActions.add('Error', err, 'error');
             });
     },
     onAdd: function(post){
         common.post(apiUrl + postsUrl, '', JSON.stringify(post))
             .then(function(res){
                 if(res.errMsg){
-                    console.error('Error', res.errMsg);
+                    NotificationActions.add('Error', res.errMsg, 'error');
                     return;
                 }
 
-                console.log('==>res', res);
+                NotificationActions.add('Successed', 'Submit NewPost Successed!', 'success');
+
+                //Navigate to posts page
+                HeaderActions.selectMenu('mainMenu', 0);
             })
             .catch(function(err){
-                console.error('->Catch error', err)
+                NotificationActions.add('Error', err, 'error');
             });
     }
 });

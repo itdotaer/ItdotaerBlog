@@ -9,7 +9,7 @@ var EditorStore = require('../stores/editorStore');
 var Editor =  React.createClass({
     mixins:[Reflux.listenTo(EditorStore, 'onValueChange')],
     getInitialState: function(){
-        return {value: '# Test'};
+        return {value: ''};
     },
     onValueChange: function(value){
         this.setState({value: value});
@@ -24,7 +24,8 @@ var Editor =  React.createClass({
         window.simplemde = new SimpleMDE({ element: document.getElementById("editor"), spellChecker: false });
         window.simplemde.value(this.state.value);
         window.simplemde.codemirror.on("change", function(){
-            if(!simplemde.value()){
+            if(!window.simplemde.value()
+                || window.simplemde.value() == ''){
                 return;
             }
 

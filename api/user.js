@@ -63,11 +63,11 @@ exports.delete = function(req, res, next){
     var _id = req.params['_id'];
 
     if(!_id){
-        return jsonTool.object('Not exists _id!');
+        return res.json(jsonTool.object('Not exists _id!'));
     }
 
     UserPorxy.delete(_id, function(err, count){
-        return jsonTool.object(err, count);
+        return res.json(jsonTool.object(err, count));
     });
 };
 
@@ -75,10 +75,10 @@ exports.update = function(req, res, next){
     var user = req.body;
 
     if(!user){
-        return jsonTool.object('No user info!');
+        return res.json(jsonTool.object('No user info!'));
     }
 
     UserPorxy.update(user, function(err, count){
-        return jsonTool.object(err, count);
+        return res.json(jsonTool.object(err, count));
     });
 };

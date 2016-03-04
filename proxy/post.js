@@ -4,12 +4,12 @@
 
 var models = require('../models');
 var Post = models.Post;
+var Comment = models.Comment;
 
-exports.add = function(userId, title, tags, des, content, callback){
+exports.add = function(userId, title, tags, content, callback){
     var post = new Post({
       title: title,
       tags: tags,
-      des: des,
       content: content,
       pv: 0,
       createdBy: userId,
@@ -21,7 +21,8 @@ exports.add = function(userId, title, tags, des, content, callback){
 
 exports.get = function(title, index, size, callback){
     Post.find(title ? { title: title } : null).limit(size).skip((index - 1) * size)
-    .sort({updatedAt: -1}).populate('comment').populate('createdBy').populate('updatedBy').exec(callback)
+    .sort({updatedAt: -1}).populate('createdBy').populate('updatedBy')
+    .exec(callback);
 };
 
 exports.total = function(title, callback){

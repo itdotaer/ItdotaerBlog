@@ -8,7 +8,6 @@ var Schema    = mongoose.Schema;
 var PostSchema = new Schema({
     title: { type: String },
     tags: [],
-    des: { type: String },
     content: { type: String },
     pv: { type: Number },
     createdAt: {type: Date, default: Date.now},

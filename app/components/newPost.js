@@ -29,7 +29,6 @@ var NewPost = React.createClass({
         return {
             title: '',
             tags: '',
-            description: '',
             content: ''
         };
     },
@@ -51,12 +50,6 @@ var NewPost = React.createClass({
 
         this.setState(data);
     },
-    changeDescription: function(event){
-        var data = this.state;
-        data.description = event.target.value;
-
-        this.setState(data);
-    },
     submit: function(){
         if(isDebug) console.log('===>New Post:', this.state);
 
@@ -71,15 +64,15 @@ var NewPost = React.createClass({
         PostActions.add(data);
     },
     reset: function(){
-        if(isDebug) console.log('==>click reset');
         this.setState({
             title: '',
             tags: '',
-            description: '',
             content: ''
         });
 
-        EditorActions.setValue('jodfjiosdjfosdfj')
+        EditorActions.setValue('');
+        //清空Editor的值
+        window.simplemde.value('');
     },
     render: function(){
         return (
@@ -88,7 +81,6 @@ var NewPost = React.createClass({
                 <form className="form-horizontal">
                     <ReactRootstrap.Input type="text" label="Title:" labelClassName="col-xs-2" wrapperClassName="col-xs-10" onChange={this.changeTitle} value={this.state.title}/>
                     <ReactRootstrap.Input type="text" label="Tags:" labelClassName="col-xs-2" wrapperClassName="col-xs-10" onChange={this.changeTags} value={this.state.tags}/>
-                    <ReactRootstrap.Input type="textarea" label="Description:" labelClassName="col-xs-2" wrapperClassName="col-xs-10" onChange={this.changeDescription} value={this.state.description}/>
 
                     <h2>Content</h2>
                     <Editor />

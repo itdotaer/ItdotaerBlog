@@ -10,23 +10,28 @@ var loginUrl = '/login'
 
 var common = require('../requests/common');
 
+// isDebug
+var isDebug = require('../../config').appInfo.isDebug;
+
 var UserLoginStore = Reflux.createStore({
-    user: {},
+    user: null,
     listenables: UserLoginActions,
     onLogin: function(user){
         var that = this;
-        console.log('login', user);
+        if(isDebug) console.log('login', user);
         //Get all
         common.post(apiUrl + loginUrl, '', JSON.stringify(user))
             .then(function(res){
                 if(res.errMsg){
-                    console.error('Error', res.errMsg);
+                    NotificationActions.add('Error', res.errMsg, 'error');
                     return;
                 }
 
                 if(!res.data){
                     NotificationActions.add('Error', 'UserName or password is wrong!', 'error');
                 }else{
+                    NotificationActions.add('Successed', 'Login Successed!', 'success');
+
                     that.user = res.data;
                     that.trigger(that.user);
                 }
@@ -36,8 +41,17 @@ var UserLoginStore = Reflux.createStore({
             });
     },
     onLogout: function(){
-        this.user = {};
+        this.user = null;
         this.trigger(this.user);
+    },
+    onCheckIfLogin: function(){
+        var flag = false;
+        
+        if(this.user){
+            flag = true;
+        }
+
+        this.trigger(flag);
     }
 });
 
