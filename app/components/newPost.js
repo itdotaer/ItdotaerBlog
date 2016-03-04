@@ -53,15 +53,8 @@ var NewPost = React.createClass({
     submit: function(){
         if(isDebug) console.log('===>New Post:', this.state);
 
-        //Split tags to array
-        var data = this.state;
-
-        if(data.tags instanceof String){
-            data.tags = data.tags.split(';');
-        }
-
         //Submit
-        PostActions.add(data);
+        PostActions.add(this.state);
     },
     reset: function(){
         this.setState({

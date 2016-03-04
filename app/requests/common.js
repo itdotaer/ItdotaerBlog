@@ -4,7 +4,7 @@ var Promise = require('promise');
 var common = {
     get: get,
     post: post,
-    // delete: delete,
+    delete: remove,
     // put: put
 };
 
@@ -40,6 +40,19 @@ function get(baseUrl, queryStr){
 function post(baseUrl, queryStr, data){
     var promise = new Promise(function(resolve, reject){
         ajax('POST', baseUrl + (!queryStr || queryStr == '' ? '' : '?' + queryStr), data,
+        function(data, status, jqXHR){
+            resolve(data);
+        }, function(xmlHttpRequest, status, err){
+            reject(err);
+        });
+    });
+
+    return promise;
+}
+
+function remove(baseUrl, queryStr, data){
+    var promise = new Promise(function(resolve, reject){
+        ajax('DELETE', baseUrl + (!queryStr || queryStr == '' ? '' : '?' + queryStr), data,
         function(data, status, jqXHR){
             resolve(data);
         }, function(xmlHttpRequest, status, err){

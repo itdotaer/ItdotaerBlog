@@ -18,6 +18,8 @@ var Comment = require('../api/comment');
 router.get('/posts', Post.get);
 router.post('/posts', auth.loginRequired, Post.add);
 router.get('/posts/:id', Post.getById);
+router.put('/posts/:id', auth.loginRequired, Post.update);
+router.delete('/posts/:id', auth.loginRequired, Post.delete);
 
 // Login
 router.post('/login', User.login);

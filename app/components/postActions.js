@@ -6,7 +6,7 @@ var React = require('react');
 var Reflux = require('reflux');
 
 var NotificationActions = require('../actions/notificationActions');
-
+var PostActions = require('../actions/postActions');
 
 // React-Bootstrap
 var ReactRootstrap = require('react-bootstrap');
@@ -14,10 +14,15 @@ var ReactRootstrap = require('react-bootstrap');
 // isDebug
 var isDebug = require('../../config').appInfo.isDebug;
 
-var PostActions = React.createClass({
+var PostAction = React.createClass({
     getInitialState: function(){
         return {
         };
+    },
+    delete: function(){
+        if(confirm("Are you sure to delete this post?")){
+            PostActions.deleteById(this.props.id);
+        }
     },
     render: function(){
         console.log('islogin', this.props.isLogin);
@@ -27,7 +32,7 @@ var PostActions = React.createClass({
                     this.props.isLogin == true ? (
                         <div className="post-actions">
                             <ReactRootstrap.Button bsStyle="success">Edit</ReactRootstrap.Button>
-                            <ReactRootstrap.Button bsStyle="danger">Delete</ReactRootstrap.Button>
+                            <ReactRootstrap.Button bsStyle="danger" onClick={this.delete}>Delete</ReactRootstrap.Button>
                         </div>
                     ) : ('')
                 }
@@ -36,4 +41,4 @@ var PostActions = React.createClass({
     }
 });
 
-module.exports = PostActions;
+module.exports = PostAction;

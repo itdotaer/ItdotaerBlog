@@ -9,14 +9,17 @@ var jsonTool = require('../common/jsonTool');
 exports.add = function(req, res, next){
     var post = req.body;
 
-    if(!post || !post.title || post.tags.length < 1 || !post.content){
+    if(!post || !post.title || !post.tags || !post.content){
         return res.json(jsonTool.object('Not entire post data!'));
     }
+
+    //Split tags
+    var tags = post.tags.split(';');
 
     var loginUser = auth.getLoginUser(req);
 
     PostProxy.add(loginUser._id, post.title,
-        post.tags, post.content,
+        tags, post.content,
         function(err, user){
             return res.json(jsonTool.object(err, user));
         });

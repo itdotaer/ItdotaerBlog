@@ -76,7 +76,7 @@ var DetailPost = React.createClass({
                                 <span>创建 {this.state.post ? (new Date(this.state.post.createdAt)).toDateString() : ''}</span>
                                 <span>修改 {this.state.post ? (new Date(this.state.post.updatedAt)).toDateString() : ''}</span>
                             </div>
-                            <PostAction isLogin={this.state.isLogin} />
+                            <PostAction isLogin={this.state.isLogin} id={this.state.post._id} />
                             <div className="content"
                                 dangerouslySetInnerHTML={{__html: this.state.post ? converter.makeHtml(this.state.post.content) : ''}}></div>
                         </div>

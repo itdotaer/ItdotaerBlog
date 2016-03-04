@@ -48,9 +48,41 @@ var PostStore = Reflux.createStore({
                     return;
                 }
 
-                that.data.posts = [res.data];
-                that.data.total = 1;
-                that.trigger(that.data);
+                if(res.data){
+                    that.data.posts = [res.data];
+                    that.data.total = 1;
+                    that.trigger(that.data);
+                }else{
+                    NotificationActions.add('Error', "Post Not Found!", 'error');
+                    //Navigate to posts page
+                    HeaderActions.selectMenu('mainMenu', 0);
+                }
+            })
+            .catch(function(err){
+                NotificationActions.add('Error', err, 'error');
+            });
+    },
+    onDeleteById: function(id){
+        if(!id || id == ''){
+            NotificationActions.add('Error', 'No Valid Post Id', 'error');
+            return;
+        }
+        common.delete(apiUrl + postsUrl + '/' + id, '')
+            .then(function(res){
+                if(res.errMsg){
+                    NotificationActions.add('Error', res.errMsg, 'error');
+                    return;
+                }
+
+                console.log('res', res);
+
+                if(res.data.n > 0 && res.data.ok == 1){
+                    NotificationActions.add('Successed', 'Delete Successed!', 'success');
+                    //Navigate to posts page
+                    HeaderActions.selectMenu('mainMenu', 0);
+                }else{
+                    NotificationActions.add('Successed', 'Nothing Delete!', 'success');
+                }
             })
             .catch(function(err){
                 NotificationActions.add('Error', err, 'error');
