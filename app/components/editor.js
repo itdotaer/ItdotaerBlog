@@ -18,7 +18,6 @@ var Editor =  React.createClass({
         EditorActions.setValue(value);
     },
     componentDidMount: function(){
-        EditorActions.getValue();
         var that = this;
         //Init Editor
         window.simplemde = new SimpleMDE({ element: document.getElementById("editor"), spellChecker: false });

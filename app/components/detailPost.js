@@ -6,7 +6,7 @@ var React = require('react');
 var Reflux = require('reflux');
 
 // React-Bootstrap
-var ReactRootstrap = require('react-bootstrap');
+var ReactBootstrap = require('react-bootstrap');
 
 var NotificationActions = require('../actions/notificationActions');
 

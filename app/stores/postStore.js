@@ -104,6 +104,29 @@ var PostStore = Reflux.createStore({
             .catch(function(err){
                 NotificationActions.add('Error', err, 'error');
             });
+    },
+    onUpdate: function(post){
+        common.put(apiUrl + postsUrl + '/' + post.id, '', JSON.stringify(post))
+            .then(function(res){
+                if(res.errMsg){
+                    NotificationActions.add('Error', res.errMsg, 'error');
+                    return;
+                }
+
+                if(res.data.n > 0 && res.data.ok == 1){
+                    NotificationActions.add('Successed', 'Update Successed!', 'success');
+                    //Navigate to posts page
+                    HeaderActions.selectMenu('mainMenu', 0);
+                }else{
+                    NotificationActions.add('Successed', 'Nothing Update!', 'success');
+                }
+
+                //Navigate to posts page
+                HeaderActions.selectMenu('mainMenu', 0);
+            })
+            .catch(function(err){
+                NotificationActions.add('Error', err, 'error');
+            });
     }
 });
 

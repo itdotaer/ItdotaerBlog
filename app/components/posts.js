@@ -10,7 +10,7 @@
  var ReactRouter = require('react-router');
  var Link = ReactRouter.Link;
 // React-Bootstrap
-var ReactRootstrap = require('react-bootstrap');
+var ReactBootstrap = require('react-bootstrap');
 
 var PostActions = require('../actions/postActions');
 var PostStore = require('../stores/postStore');
@@ -43,10 +43,10 @@ var Posts = React.createClass({
                                 <li className="post">
                                     <RenderTags tags={post.tags}/>
                                     <h4 className="title">
-                                        <Link to={'/post/' + post._id}>{post.title}</Link>
+                                        <Link to={'/post/detail/' + post._id}>{post.title}</Link>
                                     </h4>
                                     <div className="list-footer">
-                                        <Link to={'/post/' + post._id}>阅读 {post.pv} </Link>
+                                        <Link to={'/post/detail/' + post._id}>阅读 {post.pv} </Link>
                                         <span> · 创建 {(new Date(post.createdAt)).toDateString()}</span>
                                         <span> · 修改 {(new Date(post.updatedAt)).toDateString()}</span>
                                     </div>

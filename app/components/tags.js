@@ -7,7 +7,7 @@
  // Reflux
  var Reflux = require('reflux');
 // React-Bootstrap
-var ReactRootstrap = require('react-bootstrap');
+var ReactBootstrap = require('react-bootstrap');
 
 var NotificationActions = require('../actions/notificationActions');
 
@@ -15,9 +15,9 @@ var Tags = React.createClass({
     render: function(){
         return (
             <div>
-                <ReactRootstrap.Panel header="Tags">
+                <ReactBootstrap.Panel header="Tags">
                   Tags 1 | Tags 2
-                </ReactRootstrap.Panel>
+                </ReactBootstrap.Panel>
             </div>
         );
     }

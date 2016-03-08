@@ -7,7 +7,7 @@
  // Reflux
  var Reflux = require('reflux');
 // React-Bootstrap
-var ReactRootstrap = require('react-bootstrap');
+var ReactBootstrap = require('react-bootstrap');
 
 var NotificationActions = require('../actions/notificationActions');
 
@@ -15,15 +15,15 @@ var HotPosts = React.createClass({
     render: function(){
         return (
             <div>
-                <ReactRootstrap.Panel collapsible defaultExpanded header="Panel heading">
+                <ReactBootstrap.Panel collapsible defaultExpanded header="Panel heading">
                     Some default panel content here.
-                    <ReactRootstrap.ListGroup fill>
-                      <ReactRootstrap.ListGroupItem>Item 1</ReactRootstrap.ListGroupItem>
-                      <ReactRootstrap.ListGroupItem>Item 2</ReactRootstrap.ListGroupItem>
-                      <ReactRootstrap.ListGroupItem>&hellip;</ReactRootstrap.ListGroupItem>
-                    </ReactRootstrap.ListGroup>
+                    <ReactBootstrap.ListGroup fill>
+                      <ReactBootstrap.ListGroupItem>Item 1</ReactBootstrap.ListGroupItem>
+                      <ReactBootstrap.ListGroupItem>Item 2</ReactBootstrap.ListGroupItem>
+                      <ReactBootstrap.ListGroupItem>&hellip;</ReactBootstrap.ListGroupItem>
+                    </ReactBootstrap.ListGroup>
                     Some more panel content here.
-                </ReactRootstrap.Panel>
+                </ReactBootstrap.Panel>
             </div>
         );
     }

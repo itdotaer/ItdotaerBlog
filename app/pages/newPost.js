@@ -24,7 +24,7 @@ var NewPost = React.createClass({
     render: function(){
         return (
             <div>
-                <NewPostComponent />
+                <NewPostComponent params={this.props.params}/>
             </div>
         );
     }

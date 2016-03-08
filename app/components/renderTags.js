@@ -10,7 +10,7 @@
  // Reflux
  var Reflux = require('reflux');
 // React-Bootstrap
-var ReactRootstrap = require('react-bootstrap');
+var ReactBootstrap = require('react-bootstrap');
 
 var RenderTags = React.createClass({
     render: function(){

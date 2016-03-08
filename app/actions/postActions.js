@@ -8,7 +8,8 @@ var PostActions = Reflux.createActions([
     'getAll',
     'getById',
     'deleteById',
-    'add'
+    'add',
+    'update'
 ]);
 
 module.exports = PostActions;

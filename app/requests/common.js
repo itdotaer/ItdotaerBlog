@@ -5,7 +5,7 @@ var common = {
     get: get,
     post: post,
     delete: remove,
-    // put: put
+    put: put
 };
 
 function ajax(type, url, data, success, error){
@@ -53,6 +53,19 @@ function post(baseUrl, queryStr, data){
 function remove(baseUrl, queryStr, data){
     var promise = new Promise(function(resolve, reject){
         ajax('DELETE', baseUrl + (!queryStr || queryStr == '' ? '' : '?' + queryStr), data,
+        function(data, status, jqXHR){
+            resolve(data);
+        }, function(xmlHttpRequest, status, err){
+            reject(err);
+        });
+    });
+
+    return promise;
+}
+
+function put(baseUrl, queryStr, data){
+    var promise = new Promise(function(resolve, reject){
+        ajax('PUT', baseUrl + (!queryStr || queryStr == '' ? '' : '?' + queryStr), data,
         function(data, status, jqXHR){
             resolve(data);
         }, function(xmlHttpRequest, status, err){

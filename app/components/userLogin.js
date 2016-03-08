@@ -5,7 +5,7 @@
 var React = require('react');
 var Reflux = require('reflux');
 // React-Bootstrap
-var ReactRootstrap = require('react-bootstrap');
+var ReactBootstrap = require('react-bootstrap');
 
 var history = require('../history');
 
@@ -63,8 +63,8 @@ var UserLogin = React.createClass({
             <div className="row">
                 <div className="col-md-6 col-md-offset-3 login-panel">
                     <form className="form-horizontal">
-                        <ReactRootstrap.Input type="text" label="User Name:" placeholder="User Name" labelClassName="col-md-4" wrapperClassName="col-md-8" onChange={this.changeUserName} value={this.state.userName}/>
-                        <ReactRootstrap.Input type="password" label="Password:" placeholder="Password" labelClassName="col-md-4" wrapperClassName="col-md-8" onChange={this.changePassword} value={this.state.password}/>
+                        <ReactBootstrap.Input type="text" label="User Name:" placeholder="User Name" labelClassName="col-md-4" wrapperClassName="col-md-8" onChange={this.changeUserName} value={this.state.userName}/>
+                        <ReactBootstrap.Input type="password" label="Password:" placeholder="Password" labelClassName="col-md-4" wrapperClassName="col-md-8" onChange={this.changePassword} value={this.state.password}/>
                         <div className="row">
                             <div className="col-md-4 col-md-offset-5">
                                 <input type="button" className="btn btn-info btn-padding btn-margin" value="Login" onClick={this.submit}/>

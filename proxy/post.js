@@ -45,6 +45,7 @@ exports.update = function(userId, post, callback){
 
     post.updatedAt = new Date();
     post.updatedBy = userId;
+    post.tags = post.tags.split(';');
 
     var update = post;
     Post.update(conditions, update, callback);

@@ -11,7 +11,6 @@ var UserLoginActions = require('../actions/userLoginActions');
 // IsDebug
 var isDebug = require('../../config').appInfo.isDebug;
 
-// React-Router
 var history = require('../history');
 
 var HeaderStore = Reflux.createStore({
@@ -21,12 +20,12 @@ var HeaderStore = Reflux.createStore({
             items: [
                 {
                     id: 0,
-                    name: 'Posts',
+                    name: '博文',
                     path: '/main'
                 },
                 {
                     id: 1,
-                    name: 'About',
+                    name: '关于我',
                     path: '/about'
                 }
             ]
@@ -37,7 +36,7 @@ var HeaderStore = Reflux.createStore({
             items: [
                 {
                     id: 0,
-                    name: 'Login',
+                    name: '登录',
                     path: '/login'
                 }
             ]
@@ -75,10 +74,10 @@ var HeaderStore = Reflux.createStore({
         if(isDebug) console.log('user', user);
         this.menu.userMenu.user = user;
 
-        this.menu.userMenu.items[0].name = 'New Post';
-        this.menu.userMenu.items[0].path = '/post';
+        this.menu.userMenu.items[0].name = '发表博文';
+        this.menu.userMenu.items[0].path = '/post/add';
 
-        this.menu.userMenu.items.push({id: this.menu.userMenu.items.length, name: 'Logout', path: '/logout'});
+        this.menu.userMenu.items.push({id: this.menu.userMenu.items.length, name: '退出', path: '/logout'});
 
         history.pushState(null, '/main');
         this.trigger(this.menu);
@@ -96,7 +95,7 @@ var HeaderStore = Reflux.createStore({
                 // else navigate to login page.
                 if(this.menu.userMenu.items[selectedKey].path == '/logout'){
                     this.menu.userMenu.user = null;
-                    this.menu.userMenu.items[0].name = 'Login';
+                    this.menu.userMenu.items[0].name = '登录';
                     this.menu.userMenu.items[0].path = '/login';
 
                     this.menu.userMenu.items.splice(1, this.menu.userMenu.items.length - 1);

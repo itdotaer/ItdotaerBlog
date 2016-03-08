@@ -49,8 +49,9 @@ var routes = (
         <Route path="/" component={App}>
             <IndexRoute component={Main}/>
             <Route path="main" component={Main} />
-            <Route path="post" component={NewPost} />
-            <Route path="post/:id" component={DetailPost} />
+            <Route path="post/add" component={NewPost} />
+            <Route path="post/edit/:id" component={NewPost} />
+            <Route path="post/detail/:id" component={DetailPost} />
             <Route path="about" component={About} />
             <Route path="login" component={Login} />
             <Route path="logout" component={Main} />

@@ -70,13 +70,13 @@ exports.delete = function(req, res, next){
 
 exports.update = function(req, res, next){
     var post = req.body;
-    var loginUser = auth.getLoginUser();
+    var loginUser = auth.getLoginUser(req);
 
     if(!post){
-        jsonTool.object('No post info!');
+        return res.json(jsonTool.object('No post info!'));
     }
 
     PostProxy.update(loginUser._id, post, function(err, count){
-        return jsonTool.object(err, count);
+        return res.json(jsonTool.object(err, count));
     });
 };
