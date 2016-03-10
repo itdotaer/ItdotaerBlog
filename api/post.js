@@ -16,6 +16,12 @@ exports.add = function(req, res, next){
     //Split tags
     var tags = post.tags.split(';');
 
+    tags = tags.map(function(tag){
+        return ({
+            tagName: tag
+        });
+    });
+
     var loginUser = auth.getLoginUser(req);
 
     PostProxy.add(loginUser._id, post.title,
@@ -52,7 +58,17 @@ exports.getById = function(req, res, next){
     }
 
     PostProxy.getById(_id, function(err, post){
-        return res.json(jsonTool.object(err, post));
+        PostProxy.updatePv(post, function(err, cb){
+            if(err){
+                console.error('Error:', err);
+            }
+
+            if(cb.n < 1 && cb.ok != 1){
+                console.error('Error:', 'Post(Id:'+ _id + ')pv not be added successed!');
+            }
+
+            return res.json(jsonTool.object(err, post));
+        });
     });
 };
 
@@ -63,8 +79,8 @@ exports.delete = function(req, res, next){
         res.json(jsonTool.object('No Post _id!'));
     }
 
-    PostProxy.delete(_id, function(err, count){
-        return res.json(jsonTool.object(err, count));
+    PostProxy.delete(_id, function(err, cb){
+        return res.json(jsonTool.object(err, cb));
     });
 };
 
@@ -76,7 +92,47 @@ exports.update = function(req, res, next){
         return res.json(jsonTool.object('No post info!'));
     }
 
-    PostProxy.update(loginUser._id, post, function(err, count){
-        return res.json(jsonTool.object(err, count));
+    //Split tags
+    var tags = post.tags.split(';');
+
+    tags = tags.map(function(tag){
+        return ({
+            tagName: tag
+        });
+    });
+
+    post.tags = tags;
+
+    PostProxy.update(loginUser._id, post, function(err, cb){
+        return res.json(jsonTool.object(err, cb));
+    });
+};
+
+exports.getTags = function(req, res, next){
+    PostProxy.getTags(function(err, tags){
+        return res.json(jsonTool.data(err, tags, -1));
+    });
+};
+
+exports.getPostsByTag = function(req, res, next){
+    var tag = req.params['tag'];
+    var index = req.query['index'];
+    var size = req.query['size'];
+
+    if(!index || !size){
+        return res.json(jsonTool.object('Not entire pagination info!'));
+    }
+
+    if(!tag){
+        return res.json(jsonTool.object('No tag!'));
+    }
+
+    PostProxy.getPostTotalByTag(tag, function(err, count){
+        if(err){
+            return res.json(jsonTool.object(err));
+        }
+        PostProxy.getPostsByTag(tag, index, size, function(err_1, posts){
+            return res.json(jsonTool.data(err_1, posts, count));
+        });
     });
 };

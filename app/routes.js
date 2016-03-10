@@ -16,6 +16,8 @@ var history  = require('./history');
 var App = require('./pages/app');
 //Main Page
 var Main = require('./pages/main');
+// Tag Posts
+var TagPosts = require('./pages/tagPosts');
 //About Page
 var About = require('./pages/about');
 //Login
@@ -49,6 +51,7 @@ var routes = (
         <Route path="/" component={App}>
             <IndexRoute component={Main}/>
             <Route path="main" component={Main} />
+            <Route path="posts/tags/:tag" component={TagPosts} />
             <Route path="post/add" component={NewPost} />
             <Route path="post/edit/:id" component={NewPost} />
             <Route path="post/detail/:id" component={DetailPost} />

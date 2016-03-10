@@ -2,6 +2,8 @@
  * Post Proxy
  */
 
+var sortTags = require('../common/common').sortTags;
+
 var models = require('../models');
 var Post = models.Post;
 var Comment = models.Comment;
@@ -45,7 +47,48 @@ exports.update = function(userId, post, callback){
 
     post.updatedAt = new Date();
     post.updatedBy = userId;
-    post.tags = post.tags.split(';');
+
+    var update = post;
+    Post.update(conditions, update, callback);
+};
+
+exports.getTags = function(callback){
+    var tags = [];
+
+    Post.find(null).sort({updatedAt: -1}).exec(function(err, posts){
+        if(err){
+            return callback(err, null);
+        }
+
+        posts.forEach(function(post){
+            if(post.tags && post.tags.length > 0){
+                tags = sortTags(tags, post.tags);
+            }
+        });
+
+        return callback(null, tags);
+    });
+};
+
+exports.getPostsByTag = function(tag, index, size, callback){
+    Post.find({tags: {$elemMatch: {tagName: tag}}})
+    .sort({updatedAt: -1}).exec(callback);
+};
+
+exports.getPostTotalByTag = function(tag, callback){
+    Post.count({tags: {$elemMatch: {tagName : tag}}}, callback);
+};
+
+exports.updatePv = function(post, callback){
+    var conditions = { _id: post._id };
+    delete post._id;
+    delete post.createdAt;
+    delete post.createdBy;
+    delete post.updatedAt;
+    delete post.updatedBy;
+    delete post.tags;
+
+    post.pv += 1;
 
     var update = post;
     Post.update(conditions, update, callback);

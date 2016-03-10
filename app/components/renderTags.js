@@ -19,7 +19,7 @@ var RenderTags = React.createClass({
                 <i className="glyphicon glyphicon-tags"></i>
                 {
                     this.props.tags.map(function(tag){
-                        return (<Link to={'/tag/' + tag} className="tag">{tag}</Link>);
+                        return (<Link to={'/posts/tags/' + tag.tagName} className="tag">{tag.tagName}</Link>);
                     })
                 }
             </div>

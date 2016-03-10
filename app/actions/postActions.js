@@ -5,7 +5,8 @@
 var Reflux = require('reflux');
 
 var PostActions = Reflux.createActions([
-    'getAll',
+    'get',
+    'getPostsByTag',
     'getById',
     'deleteById',
     'add',

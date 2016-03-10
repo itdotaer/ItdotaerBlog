@@ -1,5 +1,5 @@
 /**
- * Posts
+ * Tag Posts
  */
 
  // React
@@ -12,7 +12,7 @@
 // React-Bootstrap
 var ReactBootstrap = require('react-bootstrap');
 
-// var PostActions = require('../actions/postActions');
+var PostActions = require('../actions/postActions');
 var PostStore = require('../stores/postStore');
 var NotificationActions = require('../actions/notificationActions');
 
@@ -21,7 +21,7 @@ var RenderTags = require('./renderTags');
 //Pagination
 var AdvancedPagination = require('./advancedPagination');
 
-var Posts = React.createClass({
+var TagPosts = React.createClass({
     mixins:[
         Reflux.listenTo(PostStore, 'onPostsChange'),
     ],
@@ -44,7 +44,6 @@ var Posts = React.createClass({
                             this.state.posts.map(function(post){
                                 return (
                                     <li className="post">
-                                        <RenderTags tags={post.tags}/>
                                         <h4 className="title">
                                             <Link to={'/post/detail/' + post._id}>{post.title}</Link>
                                         </h4>
@@ -67,4 +66,4 @@ var Posts = React.createClass({
     }
 });
 
-module.exports = Posts;
+module.exports = TagPosts;

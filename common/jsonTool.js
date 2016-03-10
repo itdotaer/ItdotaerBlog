@@ -7,7 +7,7 @@ var jsonTool = {
         return { errMsg: err, data: data ? data : '' };
     },
     data: function(err, data, total){
-        return { errMsg: err, data: data ? data : '', total: total };
+        return { errMsg: err, data: data ? data : '', total: total ? total : -1 };
     }
 };
 

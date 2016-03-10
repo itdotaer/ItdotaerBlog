@@ -50,7 +50,13 @@ var NewPost = React.createClass({
             var post = resData.posts[0];
             data._id = post._id;
             data.title = post.title;
-            data.tags = post.tags.join(';');
+            //Tags
+            var tags = post.tags.map(function(tag){
+                return (tag.tagName);
+            });
+
+            data.tags = tags.join(';');
+
             data.content = post.content;
 
             //清空Editor的值
