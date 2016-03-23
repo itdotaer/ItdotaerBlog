@@ -60,7 +60,7 @@ var TagPosts = React.createClass({
                         )
                     }
                 </ul>
-                <AdvancedPagination total={this.state.total}/>
+                <AdvancedPagination total={this.state.total} tag={this.props.tag}/>
             </div>
         );
     }

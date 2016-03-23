@@ -33,10 +33,10 @@ var PostStore = Reflux.createStore({
                 NotificationActions.add('Error', err, 'error');
             });
     },
-    onGetPostsByTag: function(tag){
+    onGetPostsByTag: function(tag, index, size){
         var that = this;
         //Get all
-        common.get(apiUrl + postsUrl + '/tags/' + tag, 'index=1&size=9999')
+        common.get(apiUrl + postsUrl + '/tags/' + tag, 'index=' + index + '&size=' + size)
             .then(function(res){
                 if(res.errMsg){
                     NotificationActions.add('Error', res.errMsg, 'error');

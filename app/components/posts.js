@@ -61,7 +61,7 @@ var Posts = React.createClass({
                         )
                     }
                 </ul>
-                <AdvancedPagination total={this.state.total}/>
+                <AdvancedPagination total={this.state.total} />
             </div>
         );
     }

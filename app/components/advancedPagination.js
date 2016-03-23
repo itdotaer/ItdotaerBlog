@@ -18,14 +18,24 @@ var AdvancedPagination = React.createClass({
       maxButtons: 5
     };
   },
+  getPosts: function(){
+      var tag = this.props.tag;
+      if(!tag){
+          PostActions.get(this.state.activePage, this.state.size);
+      }else{
+          PostActions.getPostsByTag(tag, this.state.activePage, this.state.size)
+      }
+
+  },
   handleSelect(event, selectedEvent) {
       var data = this.state;
       data.activePage = selectedEvent.eventKey;
       this.setState(data);
-      PostActions.get(this.state.activePage, this.state.size);
+
+      this.getPosts();
   },
   componentDidMount: function(){
-      PostActions.get(this.state.activePage, this.state.size);
+      this.getPosts();
   },
   render: function() {
       var items = Math.ceil(this.props.total/this.state.size);
