@@ -12,6 +12,7 @@ var PostSchema = new Schema({
     }],
     content: { type: String },
     pv: { type: Number },
+    commentNum: { type: Number },
     createdAt: {type: Date, default: Date.now},
     createdBy: {type: Schema.ObjectId, ref: 'User'},
     updatedAt: {type: Date, default: Date.now},

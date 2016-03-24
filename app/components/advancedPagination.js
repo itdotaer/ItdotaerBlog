@@ -14,7 +14,7 @@ var AdvancedPagination = React.createClass({
   getInitialState() {
     return {
       activePage: 1,
-      size: 5,
+      size: 6,
       maxButtons: 5
     };
   },

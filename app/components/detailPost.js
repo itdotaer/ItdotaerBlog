@@ -19,7 +19,7 @@ var UserLoginStore = require('../stores/userLoginStore');
 var UserLoginActions = require('../actions/userLoginActions');
 
 // Post actions
-var PostAction = require('./postActions');
+var PostAction = require('./postAction');
 
 //Showdown
 var showdown  = require('showdown'),

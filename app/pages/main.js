@@ -5,7 +5,7 @@
 var React = require('react');
 var Posts = require('../components/posts');
 var Tags = require('../components/tags');
-var HotPosts = require('../components/hotPosts');
+var ClassifiedPosts = require('../components/ClassifiedPosts');
 
 var Main = React.createClass({
     render: function(){
@@ -15,9 +15,7 @@ var Main = React.createClass({
                     <Posts />
                 </div>
                 <div className="main-right">
-                    <HotPosts />
-                    <HotPosts />
-                    <Tags />
+                    <ClassifiedPosts />
                 </div>
             </div>
         );

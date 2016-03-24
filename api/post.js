@@ -6,6 +6,8 @@ var PostProxy = require('../proxy').Post;
 var auth = require('../middlewares/auth');
 var jsonTool = require('../common/jsonTool');
 
+var appInfo = require('../config').appInfo;
+
 exports.add = function(req, res, next){
     var post = req.body;
 
@@ -47,6 +49,15 @@ exports.get = function(req, res, next){
         PostProxy.get(title, index, size, function(err_1, data){
             return res.json(jsonTool.data(err_1, data, count));
         });
+    });
+};
+
+exports.getPosts = function(req, res, next){
+    var type = req.query['type'];
+    var hotPostNum = appInfo.hotPostNum;
+
+    PostProxy.getPosts(type, hotPostNum, function(err, data){
+        return res.json(jsonTool.object(err, data));
     });
 };
 

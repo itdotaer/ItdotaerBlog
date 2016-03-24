@@ -9,6 +9,7 @@ var appInfo = {
     email: 'hujiangtao1235@qq.com',
     buildDev: true,
     isDebug: true,
+    hotPostNum: 5,
     sessionSecret: 'itdotaer',
     hash: 'fb69e99dcfed9b73ec35',
     apiUrl: 'http://10.44.22.38:3000/api',

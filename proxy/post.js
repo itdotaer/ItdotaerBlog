@@ -1,7 +1,6 @@
 /**
  * Post Proxy
  */
-
 var sortTags = require('../common/common').sortTags;
 
 var models = require('../models');
@@ -29,6 +28,30 @@ exports.get = function(title, index, size, callback){
 
 exports.total = function(title, callback){
     Post.count(title ? {title: title} : null, callback);
+};
+
+exports.getPosts = function(type, size, callback){
+    switch (type) {
+        case 'byViewNum':
+            Post.find().limit(size).sort({pv: -1}).limit(size).exec(callback);
+            break;
+        case 'byCommentNum':
+            Post.find().limit(size).sort({commentNum: -1}).limit(size).exec(callback);
+            break;
+        default:
+            var total = -1;
+            Post.count(function(err, count){
+                if(err){
+                    return callback(err);
+                }
+
+                total = count;
+            });
+
+            //随机生成文章
+            var randomSkip = Math.ceil(Math.random() * total);
+            Post.find().limit(size).sort({updatedAt: -1}).limit(size).skip(randomSkip).exec(callback);
+    }
 };
 
 exports.getById = function(id, callback){

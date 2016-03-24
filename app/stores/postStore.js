@@ -51,6 +51,24 @@ var PostStore = Reflux.createStore({
                 NotificationActions.add('Error', err, 'error');
             });
     },
+    onGetTags: function(){
+        var that = this;
+        //Get all
+        common.get(apiUrl + postsUrl + '/tags', '')
+            .then(function(res){
+                if(res.errMsg){
+                    NotificationActions.add('Error', res.errMsg, 'error');
+                    return;
+                }
+
+                that.data.posts = res.tags;
+                // that.data.total = res.total;
+                that.trigger(that.data);
+            })
+            .catch(function(err){
+                NotificationActions.add('Error', err, 'error');
+            });
+    },
     onGetById: function(id){
         if(!id || id == ''){
             NotificationActions.add('Error', 'No Valid Post Id', 'error');
