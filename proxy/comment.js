@@ -5,6 +5,8 @@
 var models = require('../models');
 var Comment = models.Comment;
 
+var PostProxy = require('../proxy').Post;
+
 exports.add = function(postId, email, content, callback){
     var comment = new Comment({
       email: email,
@@ -12,11 +14,25 @@ exports.add = function(postId, email, content, callback){
       postId: postId
     });
 
-    comment.save(callback);
+    comment.save(function(err, cbComment){
+        if(err){
+            return callback(err);
+        }
+
+        //Add main post commentNum
+        PostProxy.addCommentNum(postId, 1, function(err_1, cbUpdate){
+            if(err_1){
+                return callback(err_1);
+            }
+
+            //这里没有判断更新条数（如果需要，应该判断。）
+            return callback(null, cbComment);
+        });
+    });
 };
 
-exports.get = function(postId, index, size, callback){
-    Comment.find({ postId: postId }).limit(size).skip((index + 1) * size).exec(callback)
+exports.get = function(postId, callback){
+    Comment.find({ postId: postId }).sort({createdAt: -1}).exec(callback);
 };
 
 exports.total = function(postId, callback){

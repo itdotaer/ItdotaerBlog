@@ -6,9 +6,18 @@ var CommentProxy = require('../proxy').Comment;
 var jsonTool = require('../common/jsonTool');
 
 exports.add = function(req, res, next){
+    var postId = req.params['postId'];
+    if(!postId){
+        return res.json(jsonTool.object('No postId!'));
+    }
+
     var comment = req.body;
 
-    CommentProxy.add(comment.postId, comment.email, comment.content,
+    if(!comment || !comment.email || !comment.content){
+        return res.json(jsonTool.object('Not entire comment data!'));
+    }
+
+    CommentProxy.add(postId, comment.email, comment.content,
         function(err, comment){
             return res.json(jsonTool.object(err, comment));
         });
@@ -16,23 +25,18 @@ exports.add = function(req, res, next){
 
 exports.get = function(req, res, next){
     var postId = req.params['postId'];
-    var index = req.query['index'];
-    var size = req.query['size'];
 
     if(!postId){
         return res.json(jsonTool.object('No postId!'));
     }
 
-    if(!index || !size){
-        return res.json(jsonTool.object('Not entire pagination info!'));
-    }
 
     CommentProxy.total(postId, function(err, count){
         if(err){
             return res.json(jsonTool.object(err));
         }
 
-        CommentProxy.get(postId, index, size, function(err_1, comments){
+        CommentProxy.get(postId, function(err_1, comments){
             return res.json(jsonTool.data(err_1, comments, count));
         });
     });

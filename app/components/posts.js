@@ -12,7 +12,6 @@
 // React-Bootstrap
 var ReactBootstrap = require('react-bootstrap');
 
-// var PostActions = require('../actions/postActions');
 var PostStore = require('../stores/postStore');
 var NotificationActions = require('../actions/notificationActions');
 

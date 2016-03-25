@@ -11,7 +11,7 @@ var CommentSchema = new Schema({
     goodStars: { type: Number },
     badStars: { type: Number },
     createdAt: { type: Date, default: Date.now },
-    post: { type: Schema.ObjectId, ref: 'Post' }
+    postId: { type: Schema.ObjectId, ref: 'Post' }
 });
 
 CommentSchema.index({email: 1});

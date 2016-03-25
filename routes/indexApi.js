@@ -24,6 +24,10 @@ router.get('/posts/:id', Post.getById);
 router.put('/posts/:id', auth.loginRequired, Post.update);
 router.delete('/posts/:id', auth.loginRequired, Post.delete);
 
+// Comment
+router.get('/comments/:postId', Comment.get);
+router.post('/comments/:postId', Comment.add);
+
 // Login
 router.post('/login', User.login);
 

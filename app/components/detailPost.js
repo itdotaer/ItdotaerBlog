@@ -57,8 +57,10 @@ var DetailPost = React.createClass({
     },
     componentDidMount: function(){
         //Get post information
-        if(isDebug) console.log('PostId:', this.props.params.id);
-        PostActions.getById(this.props.params.id);
+        var postId = this.props.postId;
+        if(isDebug) console.log('PostId:', this.props.postId);
+        
+        PostActions.getById(postId);
 
         // Check if login
         UserLoginActions.checkIfLogin();

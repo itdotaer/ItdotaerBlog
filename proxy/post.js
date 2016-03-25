@@ -105,14 +105,45 @@ exports.getPostTotalByTag = function(tag, callback){
 exports.updatePv = function(post, callback){
     var conditions = { _id: post._id };
     delete post._id;
+    delete post.content;
     delete post.createdAt;
     delete post.createdBy;
     delete post.updatedAt;
     delete post.updatedBy;
     delete post.tags;
+    delete post.commentNum;
 
     post.pv += 1;
 
     var update = post;
     Post.update(conditions, update, callback);
+};
+
+exports.addCommentNum = function(postId, num, callback){
+     this.getById(postId, function(err, cbPost){
+         if(err){
+             return callback(err);
+         }
+
+         if(cbPost){
+             var conditions = { _id: postId };
+
+             delete cbPost._id;
+             delete cbPost.content;
+             delete cbPost.createdAt;
+             delete cbPost.createdBy;
+             delete cbPost.updatedAt;
+             delete cbPost.updatedBy;
+             delete cbPost.tags;
+             delete cbPost.pv;
+
+             cbPost.commentNum += num;
+
+             var update = cbPost;
+
+             Post.update(conditions, update, callback);
+         }else{
+             return callback('Not find Post by PostId.(' + postId + ')');
+         }
+     });
 };

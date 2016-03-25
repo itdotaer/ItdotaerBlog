@@ -15,10 +15,11 @@ var isDebug = require('../../config').appInfo.isDebug;
 
 var DetailPost = React.createClass({
     render: function(){
+        var postId = this.props.params.id;
         return (
             <div>
-                <DetailPostComponent params={this.props.params} />
-                <Comment />
+                <DetailPostComponent postId={postId} />
+                <Comment postId={postId}/>
             </div>
         );
     }
