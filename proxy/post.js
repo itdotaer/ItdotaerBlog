@@ -13,6 +13,7 @@ exports.add = function(userId, title, tags, content, callback){
       tags: tags,
       content: content,
       pv: 0,
+      commentNum: 0,
       createdBy: userId,
       updatedBy: userId
     });
@@ -46,11 +47,11 @@ exports.getPosts = function(type, size, callback){
                 }
 
                 total = count;
-            });
 
-            //随机生成文章
-            var randomSkip = Math.ceil(Math.random() * total);
-            Post.find().limit(size).sort({updatedAt: -1}).limit(size).skip(randomSkip).exec(callback);
+                //随机生成文章
+                var randomSkip = Math.ceil(Math.random() * total);
+                Post.find().limit(size).limit(size).skip(randomSkip).exec(callback);
+            });
     }
 };
 

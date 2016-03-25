@@ -49,6 +49,7 @@ var Posts = React.createClass({
                                         </h4>
                                         <div className="list-footer">
                                             <Link to={'/post/detail/' + post._id}>阅读 {post.pv} </Link>
+                                            <Link to={'/post/detail/' + post._id}>评论 {post.commentNum} </Link>
                                             <span> · 创建 {(new Date(post.createdAt)).toDateString()}</span>
                                             <span> · 修改 {(new Date(post.updatedAt)).toDateString()}</span>
                                         </div>

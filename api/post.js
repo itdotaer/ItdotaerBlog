@@ -69,17 +69,25 @@ exports.getById = function(req, res, next){
     }
 
     PostProxy.getById(_id, function(err, post){
-        PostProxy.updatePv(post, function(err, cb){
-            if(err){
-                console.error('Error:', err);
-            }
+        if(err){
+            return res.json(jsonTool.object(err));
+        }
 
-            if(cb.n < 1 && cb.ok != 1){
-                console.error('Error:', 'Post(Id:'+ _id + ')pv not be added successed!');
-            }
+        if(post){
+            PostProxy.updatePv(post, function(err_1, cb){
+                if(err_1){
+                    console.error('Error:', err);
+                }
 
-            return res.json(jsonTool.object(err, post));
-        });
+                if(cb.n < 1 && cb.ok != 1){
+                    console.error('Error:', 'Post(Id:'+ _id + ')pv not be added successed!');
+                }
+
+                return res.json(jsonTool.object(err_1, post));
+            });
+        }else{
+            return res.json(jsonTool.object('Not find Post.(PostId:' + _id + ')'));
+        }
     });
 };
 
