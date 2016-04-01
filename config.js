@@ -12,7 +12,7 @@ var appInfo = {
     hotPostNum: 5,
     sessionSecret: 'itdotaer',
     hash: '7a0dc667b636729b7761',
-    apiUrl: 'http://huan.herokuapp.com//api',
+    apiUrl: 'http://huan.herokuapp.com/api',
     gitHubRepo: 'http://github.com/Itdotaer/ItdotaerBlog'
 };
 
