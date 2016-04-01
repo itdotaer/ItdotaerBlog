@@ -7,18 +7,18 @@ var appInfo = {
     shortDescription: 'By Harry',
     author: 'Harry Hu',
     email: 'hujiangtao1235@qq.com',
-    buildDev: true,
-    isDebug: true,
+    buildDev: false,
+    isDebug: false,
     hotPostNum: 5,
     sessionSecret: 'itdotaer',
-    hash: 'fb69e99dcfed9b73ec35',
-    apiUrl: 'http://10.44.22.38:3000/api',
+    hash: '7a0dc667b636729b7761',
+    apiUrl: 'http://huan.herokuapp.com//api',
     gitHubRepo: 'http://github.com/Itdotaer/ItdotaerBlog'
 };
 
 var dbConfig = {
     poolSize: 20,
-    address: 'mongodb://127.0.0.1:27017/ItdotaerBlog-Dev'
+    address: 'mongodb://itdotaer:itdotaer@kahana.mongohq.com:10093/blog'
 }
 
 module.exports = {
