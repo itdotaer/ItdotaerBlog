@@ -50,3 +50,7 @@ exports.getByPostId = function(postId, callback){
 exports.delete = function(id, callback){
     Comment.remove({ _id: id }, callback);
 };
+
+exports.deleteByPostId = function(postId, callback){
+    Comment.remove({postId: postId}, callback);
+};
