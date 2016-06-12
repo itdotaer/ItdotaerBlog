@@ -7,11 +7,11 @@ var appInfo = {
     shortDescription: 'By Harry',
     author: 'Harry Hu',
     email: 'hujiangtao1235@qq.com',
-    buildDev: true,
-    isDebug: true,
+    buildDev: false,
+    isDebug: false,
     hotPostNum: 5,
     sessionSecret: 'itdotaer',
-    hash: 'fb69e99dcfed9b73ec35',
+    hash: '5d7085e39aa6bf30e6fc',
     apiUrl: 'http://10.44.22.38:3000/api',
     gitHubRepo: 'http://github.com/Itdotaer/ItdotaerBlog'
 };
