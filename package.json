@@ -42,6 +42,7 @@
     "promise": "^7.1.1",
     "react": "^0.14.3",
     "react-bootstrap": "^0.28.1",
+    "react-fullpage": "^0.1.1",
     "react-md-editor": "^0.2.0",
     "react-router": "^1.0.1",
     "react-toastr": "^2.3.0",

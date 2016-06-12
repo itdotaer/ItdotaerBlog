@@ -11,14 +11,14 @@ var appInfo = {
     isDebug: false,
     hotPostNum: 5,
     sessionSecret: 'itdotaer',
-    hash: '5d7085e39aa6bf30e6fc',
-    apiUrl: 'http://10.44.22.38:3000/api',
+    hash: '4edc91ccacbfa71bffc8',
+    apiUrl: 'http://itdotaerblog.herokuapp.com/api',
     gitHubRepo: 'http://github.com/Itdotaer/ItdotaerBlog'
 };
 
 var dbConfig = {
     poolSize: 20,
-    address: 'mongodb://127.0.0.1:27017/ItdotaerBlog-Dev'
+    address: 'mongodb://itdotaer:itdotaer12358@ds013414.mlab.com:13414/itdotaer'
 }
 
 module.exports = {
