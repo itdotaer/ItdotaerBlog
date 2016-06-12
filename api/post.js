@@ -3,6 +3,7 @@
  */
 
 var PostProxy = require('../proxy').Post;
+var CommentProxy = require('../proxy').Comment;
 var auth = require('../middlewares/auth');
 var jsonTool = require('../common/jsonTool');
 
@@ -98,8 +99,16 @@ exports.delete = function(req, res, next){
         res.json(jsonTool.object('No Post _id!'));
     }
 
-    PostProxy.delete(_id, function(err, cb){
-        return res.json(jsonTool.object(err, cb));
+    // 删除评论
+    CommentProxy.deleteByPostId(_id, function(err_1, cb_1){
+        if(err_1){
+            return res.json(jsonTool.object(err_1));
+        }
+
+        // 成功之后，再删除Post
+        PostProxy.delete(_id, function(err, cb){
+            return res.json(jsonTool.object(err, cb));
+        });
     });
 };
 
