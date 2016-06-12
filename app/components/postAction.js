@@ -29,7 +29,7 @@ var PostAction = React.createClass({
         }
     },
     render: function(){
-        console.log('islogin', this.props.isLogin);
+        if(isDebug) console.log('islogin', this.props.isLogin);
         return (
             <div className="row">
                 {

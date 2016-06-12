@@ -110,8 +110,6 @@ var PostStore = Reflux.createStore({
                     return;
                 }
 
-                console.log('res', res);
-
                 if(res.data.n > 0 && res.data.ok == 1){
                     NotificationActions.add('Successed', 'Delete Successed!', 'success');
                     //Navigate to posts page
