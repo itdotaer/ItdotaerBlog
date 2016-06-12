@@ -11,13 +11,8 @@ var appInfo = {
     isDebug: false,
     hotPostNum: 5,
     sessionSecret: 'itdotaer',
-<<<<<<< HEAD
     hash: '4edc91ccacbfa71bffc8',
-    apiUrl: 'http://huan.herokuapp.com/api',
-=======
-    hash: '5d7085e39aa6bf30e6fc',
-    apiUrl: 'http://10.44.22.38:3000/api',
->>>>>>> master
+    apiUrl: 'http://itdotaerblog.herokuapp.com/api',
     gitHubRepo: 'http://github.com/Itdotaer/ItdotaerBlog'
 };
 
