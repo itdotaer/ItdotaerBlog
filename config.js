@@ -3,25 +3,25 @@
  */
 
 var appInfo = {
-    appName: 'Itdotaer Blog',
-    shortDescription: 'By Harry',
-    author: 'Harry Hu',
-    email: 'hujiangtao1235@qq.com',
-    buildDev: false,
-    isDebug: false,
-    hotPostNum: 5,
-    sessionSecret: 'itdotaer',
-    hash: '4edc91ccacbfa71bffc8',
-    apiUrl: 'http://itdotaerblog.herokuapp.com/api',
-    gitHubRepo: 'http://github.com/Itdotaer/ItdotaerBlog'
+  appName: 'Itdotaer Blog',
+  shortDescription: 'By Harry',
+  author: 'Harry Hu',
+  email: 'hujiangtao1235@qq.com',
+  buildDev: true,
+  isDebug: true,
+  hotPostNum: 5,
+  sessionSecret: 'itdotaer',
+  hash: '',
+  apiUrl: 'http://localhost:3000/api',
+  gitHubRepo: 'http://github.com/Itdotaer/ItdotaerBlog'
 };
 
 var dbConfig = {
-    poolSize: 20,
-    address: 'mongodb://itdotaer:itdotaer12358@ds013414.mlab.com:13414/itdotaer'
+  poolSize: 20,
+  address: 'mongodb://127.0.0.1:27017/ItdotaerBlog-Dev'
 }
 
 module.exports = {
-    appInfo: appInfo,
-    dbConfig: dbConfig
+  appInfo: appInfo,
+  dbConfig: dbConfig
 };
