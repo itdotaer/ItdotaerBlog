@@ -19,14 +19,12 @@
 npm install
 npm run build-dev
 
-2. Prod build
+2. Prod Build
 npm install
 npm run build-prod
 
 update config appInfo.hash to the buit hash code.
 ```
-
-# Update Logs
 
 # Contributors
 
