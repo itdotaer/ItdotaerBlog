@@ -4,14 +4,14 @@
 
 var appInfo = {
   appName: 'Itdotaer Blog',
-  shortDescription: 'By Itdotaer',
+  shortDescription: 'By Harry',
   author: 'Harry Hu',
   email: 'hujiangtao1235@qq.com',
   buildDev: false,
   isDebug: false,
   hotPostNum: 5,
   sessionSecret: 'itdotaer',
-  hash: 'bb645107f2caa485cab1',
+  hash: 'd541c822927d5109e092',
   apiUrl: 'http://itdotaer.herokuapp.com/api',
   gitHubRepo: 'http://github.com/Itdotaer/ItdotaerBlog'
 };
