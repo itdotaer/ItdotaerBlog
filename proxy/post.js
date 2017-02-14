@@ -22,7 +22,7 @@ exports.add = function(userId, title, tags, content, callback){
 };
 
 exports.get = function(title, index, size, callback){
-    Post.find(title ? { title: title } : null).limit(size).skip((index - 1) * size)
+    Post.find(title ? { title: title } : null).limit(size-0).skip((index - 1) * size)
     .sort({updatedAt: -1}).populate('createdBy').populate('updatedBy')
     .exec(callback);
 };
